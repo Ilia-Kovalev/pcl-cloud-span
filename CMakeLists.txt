@@ -31,8 +31,8 @@ target_include_directories(
 
 target_compile_features(pcl_cloud_span_pcl_cloud_span INTERFACE cxx_std_14)
 
-find_package(fmt REQUIRED)
-target_link_libraries(pcl_cloud_span_pcl_cloud_span INTERFACE fmt::fmt)
+find_package(pcl REQUIRED COMPONENTS common)
+target_link_libraries(pcl_cloud_span_pcl_cloud_span INTERFACE ${PCL_INCLUDE_LIBS})
 
 # ---- Install rules ----
 

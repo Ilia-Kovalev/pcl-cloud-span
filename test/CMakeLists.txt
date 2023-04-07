@@ -12,8 +12,8 @@ if(PROJECT_IS_TOP_LEVEL)
   enable_testing()
 endif()
 
-find_package(Catch2 REQUIRED)
-include(Catch)
+find_package(Gtest REQUIRED)
+include(GoogleTest)
 
 # ---- Tests ----
 
@@ -21,11 +21,11 @@ add_executable(pcl_cloud_span_test source/pcl_cloud_span_test.cpp)
 target_link_libraries(
     pcl_cloud_span_test PRIVATE
     pcl_cloud_span::pcl_cloud_span
-    Catch2::Catch2WithMain
+    GTest::gtest_main
 )
 target_compile_features(pcl_cloud_span_test PRIVATE cxx_std_14)
 
-catch_discover_tests(pcl_cloud_span_test)
+gtest_discover_tests(pcl_cloud_span_test)
 
 # ---- End-of-file commands ----
 
