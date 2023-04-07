@@ -1,0 +1,23 @@
+{
+  "name": "pcl-cloud-span",
+  "version-semver": "0.0.0",
+  "dependencies": [
+    {
+      "name": "fmt",
+      "version>=": "9.1.0#1"
+    }
+  ],
+  "default-features": [],
+  "features": {
+    "test": {
+      "description": "Dependencies for testing",
+      "dependencies": [
+        {
+          "name": "catch2",
+          "version>=": "3.3.1"
+        }
+      ]
+    }
+  },
+  "builtin-baseline": "8daf70c56ba9581f5251a5d4675eb771b6b34957"
+}
