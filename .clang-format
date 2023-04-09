@@ -24,14 +24,18 @@ TabWidth: 2
 UseTab: Never
 IncludeBlocks: Regroup
 IncludeCategories:
-# Main PCL includes of common module should be sorted at end of PCL includes
-  - Regex:           '^<pcl/[^/]+>$'
+# Current project include files
+  - Regex:           '^<pcl_cloud_span/[^/]+>$'
     Priority:        100
     SortPriority:    101
+# Main PCL includes of common module should be sorted at end of PCL includes
+  - Regex:           '^<pcl/[^/]+>$'
+    Priority:        102
+    SortPriority:    103
 # All other PCL includes, which are grouped into modules
   - Regex:           '^<pcl/.*/.*>$'
-    Priority:        100
-    SortPriority:    100
+    Priority:        102
+    SortPriority:    103
 # Major 3rd-Party components of tests & modules
   - Regex:           '^<gtest/'
     Priority:        200
