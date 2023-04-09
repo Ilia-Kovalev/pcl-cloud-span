@@ -22,6 +22,14 @@
         "VCPKG_INSTALL_OPTIONS": "--clean-after-build"
       }
     },
+        {
+      "name": "ci-vcpkg",
+      "hidden": true,
+      "cacheVariables": {
+        "VCPKG_INSTALL_OPTIONS": "--clean-after-build",
+        "VCPKG_BUILD_TYPE": "release"
+      }
+    },
     {
       "name": "vcpkg-win64-static",
       "hidden": true,
@@ -119,7 +127,7 @@
     },
     {
       "name": "ci-coverage",
-      "inherits": ["coverage-linux", "dev-mode", "vcpkg"],
+      "inherits": ["coverage-linux", "dev-mode", "vcpkg", "ci-vcpkg"],
       "cacheVariables": {
         "COVERAGE_HTML_COMMAND": ""
       }
@@ -127,7 +135,7 @@
     {
       "name": "ci-sanitize",
       "binaryDir": "${sourceDir}/build/sanitize",
-      "inherits": ["ci-linux", "dev-mode", "vcpkg"],
+      "inherits": ["ci-linux", "dev-mode", "vcpkg", "ci-vcpkg"],
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Sanitize",
         "CMAKE_CXX_FLAGS_SANITIZE": "-O2 -g -fsanitize=address,undefined -fno-omit-frame-pointer -fno-common",
@@ -141,15 +149,15 @@
     },
     {
       "name": "ci-macos",
-      "inherits": ["ci-build", "ci-darwin", "dev-mode", "vcpkg"]
+      "inherits": ["ci-build", "ci-darwin", "dev-mode", "vcpkg", "ci-vcpkg"]
     },
     {
       "name": "ci-ubuntu",
-      "inherits": ["ci-build", "ci-linux", "clang-tidy", "vcpkg", "cppcheck", "dev-mode"]
+      "inherits": ["ci-build", "ci-linux", "clang-tidy", "vcpkg", "cppcheck", "dev-mode", "ci-vcpkg"]
     },
     {
       "name": "ci-windows",
-      "inherits": ["ci-build", "ci-win64", "dev-mode", "vcpkg", "vcpkg-win64-static"]
+      "inherits": ["ci-build", "ci-win64", "dev-mode", "vcpkg", "vcpkg-win64-static", "ci-vcpkg"]
     }
   ]
 }
