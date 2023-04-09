@@ -120,12 +120,6 @@ public:
   : points(width_ * height_, value_), width(width_), height(height_)
   {}
 
-  PointCloud&
-  operator=(const PointCloud&)
-  {
-    return *this;
-  };
-
   // TODO: check if copy/move contructors/assignment operators are needed
 
   /** \brief Add a point cloud to the current cloud.
