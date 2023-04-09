@@ -181,8 +181,7 @@ TEST(FilterTest, ConditionalRemovalTest)
   {
     auto const condition = std::make_shared<pcl::ConditionAnd<Point>>();
     auto const comparation =
-        std::make_shared<pcl::FieldComparison<Point>>(
-        "x", pcl::ComparisonOps::GT, 0.0);
+        std::make_shared<pcl::FieldComparison<Point>>("x", pcl::ComparisonOps::GT, 0.0);
     condition->addComparison(comparation);
     filter.setCondition(condition);
   }
