@@ -24,13 +24,7 @@
 
 #pragma once
 
-#include <string>
+#define PCL_NO_PRECOMPILE
 
-/**
- * @brief Return the name of this header-only library
- */
-inline auto
-name() -> std::string
-{
-  return "pcl_cloud_span";
-}
+#include <pcl_cloud_span/point_wrapper.h>
+#include <pcl_cloud_span/impl/point_cloud.h>
