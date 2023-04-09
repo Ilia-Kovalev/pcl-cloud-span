@@ -31,13 +31,6 @@
       }
     },
     {
-      "name": "vcpkg-win64-static",
-      "hidden": true,
-      "cacheVariables": {
-        "VCPKG_TARGET_TRIPLET": "x64-windows-static-md"
-      }
-    },
-    {
       "name": "cppcheck",
       "hidden": true,
       "cacheVariables": {
@@ -157,7 +150,7 @@
     },
     {
       "name": "ci-windows",
-      "inherits": ["ci-build", "ci-win64", "dev-mode", "vcpkg", "vcpkg-win64-static", "ci-vcpkg"]
+      "inherits": ["ci-build", "ci-win64", "dev-mode", "vcpkg", "ci-vcpkg"]
     }
   ]
 }
