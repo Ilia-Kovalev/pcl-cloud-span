@@ -168,9 +168,9 @@ TEST(FilterTest, ConditionalRemovalTest)
   filter_span.setInputCloud(in_cloud_span);
   {
     auto const condition = std::make_shared<pcl::ConditionAnd<SpannablePoint>>();
-    auto const comparation = std::make_shared<pcl::FieldComparison<SpannablePoint>>(
+    auto const comparison = std::make_shared<pcl::FieldComparison<SpannablePoint>>(
         "x", pcl::ComparisonOps::GT, 0.0);
-    condition->addComparison(comparation);
+    condition->addComparison(comparison);
     filter_span.setCondition(condition);
   }
   pcl::PointCloud<SpannablePoint> out;
@@ -180,9 +180,9 @@ TEST(FilterTest, ConditionalRemovalTest)
   filter.setInputCloud(in_cloud);
   {
     auto const condition = std::make_shared<pcl::ConditionAnd<Point>>();
-    auto const comparation =
+    auto const comparison =
         std::make_shared<pcl::FieldComparison<Point>>("x", pcl::ComparisonOps::GT, 0.0);
-    condition->addComparison(comparation);
+    condition->addComparison(comparison);
     filter.setCondition(condition);
   }
   pcl::PointCloud<Point> expected;
