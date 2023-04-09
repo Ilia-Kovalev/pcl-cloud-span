@@ -12,7 +12,7 @@ if(PROJECT_IS_TOP_LEVEL)
   enable_testing()
 endif()
 
-find_package(Gtest REQUIRED)
+find_package(GTest REQUIRED)
 include(GoogleTest)
 
 find_package(PCL REQUIRED COMPONENTS filters)
