@@ -32,6 +32,7 @@ target_include_directories(
 target_compile_features(pcl_cloud_span_pcl_cloud_span INTERFACE cxx_std_14)
 
 find_package(PCL REQUIRED COMPONENTS common)
+find_package(Boost 1.78.0 REQUIRED)
 target_link_libraries(pcl_cloud_span_pcl_cloud_span INTERFACE ${PCL_INCLUDE_LIBS})
 
 # ---- Install rules ----

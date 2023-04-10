@@ -120,7 +120,7 @@ public:
   : points(width_ * height_, value_), width(width_), height(height_)
   {}
 
-  // TODO: check if copy/move contructors/assignment operators are needed
+  // TODO: check if copy/move constructors/assignment operators are needed
 
   /** \brief Add a point cloud to the current cloud.
    * \param[in] rhs the cloud to add to the current cloud
@@ -255,13 +255,13 @@ public:
   {
     if (Eigen::MatrixXf::Flags & Eigen::RowMajorBit)
       return (Eigen::Map<Eigen::MatrixXf, Eigen::Aligned, Eigen::OuterStride<>>(
-          reinterpret_cast<float*>(&points[0]) + offset,
+          reinterpret_cast<float*>(points.data()) + offset,
           size(),
           dim,
           Eigen::OuterStride<>(stride)));
     else
       return (Eigen::Map<Eigen::MatrixXf, Eigen::Aligned, Eigen::OuterStride<>>(
-          reinterpret_cast<float*>(&points[0]) + offset,
+          reinterpret_cast<float*>(points.data()) + offset,
           dim,
           size(),
           Eigen::OuterStride<>(stride)));
@@ -293,13 +293,13 @@ public:
   {
     if (Eigen::MatrixXf::Flags & Eigen::RowMajorBit)
       return (Eigen::Map<const Eigen::MatrixXf, Eigen::Aligned, Eigen::OuterStride<>>(
-          reinterpret_cast<float*>(const_cast<PointT*>(&points[0])) + offset,
+          reinterpret_cast<float*>(const_cast<PointT*>(points.data())) + offset,
           size(),
           dim,
           Eigen::OuterStride<>(stride)));
     else
       return (Eigen::Map<const Eigen::MatrixXf, Eigen::Aligned, Eigen::OuterStride<>>(
-          reinterpret_cast<float*>(const_cast<PointT*>(&points[0])) + offset,
+          reinterpret_cast<float*>(const_cast<PointT*>(points.data())) + offset,
           dim,
           size(),
           Eigen::OuterStride<>(stride)));
@@ -966,35 +966,3 @@ public:
   PCL_MAKE_ALIGNED_OPERATOR_NEW
 };
 } // namespace pcl
-
-namespace pcl_cloud_span {
-template <typename PointT, SpanType span_type>
-pcl::PointCloud<PointT>
-convertToPCL(const pcl::PointCloud<Spannable<PointT, span_type>>& in)
-{
-  pcl::PointCloud<PointT> out;
-  out.header = in.header;
-  out.points = {in.points.begin(), in.points.end()};
-  out.width = in.width;
-  out.height = in.height;
-  out.is_dense = in.is_dense;
-  out.sensor_origin_ = in.sensor_origin_;
-  out.sensor_orientation_ = in.sensor_orientation_;
-  return out;
-}
-
-template <typename PointT, SpanType span_type>
-pcl::PointCloud<PointT>
-convertToPCL(pcl::PointCloud<Spannable<PointT, span_type>>&& in)
-{
-  pcl::PointCloud<PointT> out;
-  out.header = in.header;
-  out.points = in.points.move_to_vector();
-  out.width = in.width;
-  out.height = in.height;
-  out.is_dense = in.is_dense;
-  out.sensor_origin_ = in.sensor_origin_;
-  out.sensor_orientation_ = in.sensor_orientation_;
-  return out;
-}
-} // namespace pcl_cloud_span

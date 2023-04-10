@@ -39,6 +39,8 @@ typedef unsigned long long pop_t;
 
 #include <random>
 
+using pcl_cloud_span::convertToPCL;
+using pcl_cloud_span::makeCloudSpan;
 using pcl_cloud_span::Spannable;
 using pcl_cloud_span::SpanType;
 
@@ -56,7 +58,7 @@ namespace pcl {
 bool
 operator==(const Point& a, const Point& b)
 {
-  return a.x == b.x && a.y == b.y && a.z == b.z && a.intensity == b.intensity;
+  return a.getArray4fMap().isApprox(b.getArray4fMap());
 }
 } // namespace pcl
 
@@ -64,105 +66,102 @@ TEST(FilterTest, ApproximateVoxelGridTest)
 {
   const auto in_cloud = std::make_shared<Cloud>(100, 1, Point{});
   std::default_random_engine eng(0);
-  std::uniform_real_distribution<> dis(-1, 1);
+  std::uniform_real_distribution<float> dis(-1, 1);
 
   std::generate(in_cloud->begin(), in_cloud->end(), [&]() -> Point {
-    return Point(dis(eng), dis(eng), dis(eng));
+    return {dis(eng), dis(eng), dis(eng)};
   });
 
   const auto in_cloud_span = std::make_shared<const CloudSpan>(
-      reinterpret_cast<const SpannablePoint*>(in_cloud->data()), in_cloud->size());
+      makeCloudSpan(in_cloud->data(), in_cloud->width));
 
   pcl::ApproximateVoxelGrid<SpannablePoint> filter_span;
   filter_span.setInputCloud(in_cloud_span);
-  filter_span.setLeafSize(.4, .4, .4);
+  filter_span.setLeafSize(.4f, .4f, .4f);
   pcl::PointCloud<SpannablePoint> out;
   filter_span.filter(out);
 
   pcl::ApproximateVoxelGrid<Point> filter;
   filter.setInputCloud(in_cloud);
-  filter.setLeafSize(.4, .4, .4);
+  filter.setLeafSize(.4f, .4f, .4f);
   pcl::PointCloud<Point> expected;
   filter.filter(expected);
 
-  EXPECT_THAT(pcl_cloud_span::convertToPCL(out).points,
-              ::testing::ContainerEq(expected.points));
-  EXPECT_EQ(&in_cloud->points[0], &in_cloud_span->points[0]);
+  EXPECT_THAT(convertToPCL(out).points, ::testing::ContainerEq(expected.points));
+  EXPECT_EQ(in_cloud->data(), in_cloud_span->data());
 }
 
 TEST(FilterTest, BilateralFilterTest)
 {
   const auto in_cloud = std::make_shared<Cloud>(100, 1, Point{});
   std::default_random_engine eng(0);
-  std::uniform_real_distribution<> coord_dis(-1, 1);
-  std::uniform_real_distribution<> intencity_dis(0, 1);
+  std::uniform_real_distribution<float> coord_dis(-1, 1);
+  std::uniform_real_distribution<float> intencity_dis(0, 1);
 
   std::generate(in_cloud->begin(), in_cloud->end(), [&]() -> Point {
-    return Point(coord_dis(eng), coord_dis(eng), coord_dis(eng), intencity_dis(eng));
+    return {coord_dis(eng), coord_dis(eng), coord_dis(eng), intencity_dis(eng)};
   });
 
   const auto in_cloud_span = std::make_shared<const CloudSpan>(
-      reinterpret_cast<const SpannablePoint*>(in_cloud->data()), in_cloud->size());
+      makeCloudSpan(in_cloud->data(), in_cloud->width));
 
   pcl::BilateralFilter<SpannablePoint> filter_span;
   filter_span.setInputCloud(in_cloud_span);
-  filter_span.setHalfSize(.3);
-  filter_span.setStdDev(.1);
+  filter_span.setHalfSize(.3f);
+  filter_span.setStdDev(.1f);
   pcl::PointCloud<SpannablePoint> out;
   filter_span.filter(out);
 
   pcl::BilateralFilter<Point> filter;
   filter.setInputCloud(in_cloud);
-  filter.setHalfSize(.3);
-  filter.setStdDev(.1);
+  filter.setHalfSize(.3f);
+  filter.setStdDev(.1f);
   pcl::PointCloud<Point> expected;
   filter.filter(expected);
 
-  EXPECT_THAT(pcl_cloud_span::convertToPCL(out).points,
-              ::testing::ContainerEq(expected.points));
-  EXPECT_EQ(&in_cloud->points[0], &in_cloud_span->points[0]);
+  EXPECT_THAT(convertToPCL(out).points, ::testing::ContainerEq(expected.points));
+  EXPECT_EQ(in_cloud->data(), in_cloud_span->data());
 }
 
 TEST(FilterTest, BoxClipper3DTest)
 {
   auto in_cloud = Cloud(100, 1, Point{});
   std::default_random_engine eng(0);
-  std::uniform_real_distribution<> coord_dis(-1, 1);
-  std::uniform_real_distribution<> intencity_dis(0, 1);
+  std::uniform_real_distribution<float> coord_dis(-1, 1);
+  std::uniform_real_distribution<float> intencity_dis(0, 1);
 
   std::generate(in_cloud.begin(), in_cloud.end(), [&]() -> Point {
-    return Point(coord_dis(eng), coord_dis(eng), coord_dis(eng), intencity_dis(eng));
+    return {coord_dis(eng), coord_dis(eng), coord_dis(eng), intencity_dis(eng)};
   });
 
-  const auto in_cloud_span = CloudSpan(
-      reinterpret_cast<const SpannablePoint*>(in_cloud.data()), in_cloud.size());
+  const auto in_cloud_span = makeCloudSpan(in_cloud.data(), in_cloud.width);
 
   pcl::BoxClipper3D<SpannablePoint> filter_span(
-      {.1, -.1, 0}, {.1, -.1, .01}, {.3, .3, .3});
+      {.1f, -.1f, 0}, {.1f, -.1f, .01f}, {.3f, .3f, .3f});
   pcl::Indices out;
   filter_span.clipPointCloud3D(in_cloud_span, out);
 
-  pcl::BoxClipper3D<Point> filter({.1, -.1, 0}, {.1, -.1, .01}, {.3, .3, .3});
+  pcl::BoxClipper3D<Point> filter({.1f, -.1f, 0}, {.1f, -.1f, .01f}, {.3f, .3f, .3f});
   pcl::Indices expected;
   filter.clipPointCloud3D(in_cloud, expected);
 
   EXPECT_THAT(out, ::testing::ContainerEq(expected));
-  EXPECT_EQ(&in_cloud.points[0], &in_cloud_span.points[0]);
+  EXPECT_EQ(in_cloud.data(), in_cloud_span.data());
 }
 
 TEST(FilterTest, ConditionalRemovalTest)
 {
   const auto in_cloud = std::make_shared<Cloud>(100, 1, Point{});
   std::default_random_engine eng(0);
-  std::uniform_real_distribution<> coord_dis(-1, 1);
-  std::uniform_real_distribution<> intencity_dis(0, 1);
+  std::uniform_real_distribution<float> coord_dis(-1, 1);
+  std::uniform_real_distribution<float> intencity_dis(0, 1);
 
   std::generate(in_cloud->begin(), in_cloud->end(), [&]() -> Point {
-    return Point(coord_dis(eng), coord_dis(eng), coord_dis(eng), intencity_dis(eng));
+    return {coord_dis(eng), coord_dis(eng), coord_dis(eng), intencity_dis(eng)};
   });
 
   const auto in_cloud_span = std::make_shared<const CloudSpan>(
-      reinterpret_cast<const SpannablePoint*>(in_cloud->data()), in_cloud->size());
+      makeCloudSpan(in_cloud->data(), in_cloud->width));
 
   pcl::ConditionalRemoval<SpannablePoint> filter_span;
   filter_span.setInputCloud(in_cloud_span);
@@ -190,7 +189,7 @@ TEST(FilterTest, ConditionalRemovalTest)
 
   EXPECT_THAT(pcl_cloud_span::convertToPCL(out).points,
               ::testing::ContainerEq(expected.points));
-  EXPECT_EQ(&in_cloud->points[0], &in_cloud_span->points[0]);
+  EXPECT_EQ(in_cloud->data(), in_cloud_span->data());
 }
 
 TEST(FilterTest, ExtractIndicesTest)
@@ -202,8 +201,7 @@ TEST(FilterTest, ExtractIndicesTest)
   in_cloud->push_back({3, 0, 0});
 
   const auto in_cloud_span = std::make_shared<const CloudSpan>(
-      reinterpret_cast<const SpannablePoint*>(in_cloud->points.data()),
-      in_cloud->size());
+      makeCloudSpan(in_cloud->data(), in_cloud->width));
 
   const auto in_indices = std::make_shared<pcl::Indices>(pcl::Indices{1, 2});
 
@@ -221,37 +219,37 @@ TEST(FilterTest, ExtractIndicesTest)
 
   EXPECT_THAT(pcl_cloud_span::convertToPCL(out).points,
               ::testing::ContainerEq(expected.points));
-  EXPECT_EQ(&in_cloud->points[0], &in_cloud_span->points[0]);
+  EXPECT_EQ(in_cloud->data(), in_cloud_span->data());
 }
 
 TEST(FilterTest, VoxelGridTest)
 {
   const auto in_cloud = std::make_shared<Cloud>(100, 1, Point{});
   std::default_random_engine eng(0);
-  std::uniform_real_distribution<> dis(-1, 1);
+  std::uniform_real_distribution<float> dis(-1, 1);
 
   std::generate(in_cloud->begin(), in_cloud->end(), [&]() -> Point {
-    return Point(dis(eng), dis(eng), dis(eng));
+    return {dis(eng), dis(eng), dis(eng)};
   });
 
   const auto in_cloud_span = std::make_shared<const CloudSpan>(
-      reinterpret_cast<const SpannablePoint*>(in_cloud->data()), in_cloud->size());
+      makeCloudSpan(in_cloud->data(), in_cloud->width));
 
   pcl::VoxelGrid<SpannablePoint> filter_span;
   filter_span.setInputCloud(in_cloud_span);
-  filter_span.setLeafSize(.4, .4, .4);
+  filter_span.setLeafSize(.4f, .4f, .4f);
   filter_span.setMinimumPointsNumberPerVoxel(2);
   pcl::PointCloud<SpannablePoint> out;
   filter_span.filter(out);
 
   pcl::VoxelGrid<Point> filter;
   filter.setInputCloud(in_cloud);
-  filter.setLeafSize(.4, .4, .4);
+  filter.setLeafSize(.4f, .4f, .4f);
   filter.setMinimumPointsNumberPerVoxel(2);
   pcl::PointCloud<Point> expected;
   filter.filter(expected);
 
   EXPECT_THAT(pcl_cloud_span::convertToPCL(out).points,
               ::testing::ContainerEq(expected.points));
-  EXPECT_EQ(&in_cloud->points[0], &in_cloud_span->points[0]);
+  EXPECT_EQ(in_cloud->data(), in_cloud_span->data());
 }
