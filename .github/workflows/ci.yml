@@ -114,6 +114,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    
+    - name: Maximize build disk space
+      uses: easimon/maximize-build-space@v7
 
     - name: Install static analyzers
       if: matrix.os == 'ubuntu-22.04'
