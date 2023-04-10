@@ -2,5 +2,6 @@
 builtin = clear,rare,en-GB_to_en-US,names,informal,code
 check-filenames =
 check-hidden =
-skip = */.git,*/build,*/prefix,./include/pcl_cloud_span/impl/point_cloud.h
+skip = */.git,*/build,*/prefix
 quiet-level = 2
+ignore-words-list = endcode,iff

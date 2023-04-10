@@ -59,7 +59,7 @@ public:
   using const_reverse_iterator = typename span_type::const_reverse_iterator;
 
   template <typename... Args>
-  span_or_vector_base(Args&&... args) : vector_(std::forward<Args>(args)...)
+  explicit span_or_vector_base(Args&&... args) : vector_(std::forward<Args>(args)...)
   {
     update_span();
   }
@@ -73,10 +73,13 @@ public:
   {
     vector_type result;
 
-    if (is_vector())
+    if (is_vector()) {
+
       result = std::move(vector_);
-    else
+    }
+    else {
       result = {current_span_.begin(), current_span_.end()};
+    }
 
     span_ = {};
     current_span_ = {};
@@ -267,25 +270,25 @@ protected:
 
   template <
       typename F,
-      typename = std::enable_if_t<std::is_void_v<std::result_of_t<F(vector_type&)>>>>
+      typename = std::enable_if_t<std::is_void<std::result_of_t<F(vector_type&)>>::value>>
   void
   modify_vector(F&& operation)
   {
     assert(is_vector());
 
-    std::invoke(std::forward<F>(operation), vector_);
+    operation(vector_);
     update_span();
   }
 
   template <
       typename F,
-      typename = std::enable_if_t<!std::is_void_v<std::result_of_t<F(vector_type&)>>>>
+      typename = std::enable_if_t<!std::is_void<std::result_of_t<F(vector_type&)>>::value>>
   std::result_of_t<F(vector_type&)>
   modify_vector(F&& operation)
   {
     assert(is_vector());
 
-    const auto result = std::invoke(std::forward<F>(operation), vector_);
+    const auto result = operation(vector_);
     update_span();
     return result;
   }
@@ -346,18 +349,18 @@ class span_or_vector<T, span_type::read_only, Allocator>
   using base_type = detail::span_or_vector_base<T, Allocator>;
 
 public:
-  using base_type::allocator_type;
-  using base_type::const_iterator;
-  using base_type::const_pointer;
-  using base_type::const_reference;
-  using base_type::const_reverse_iterator;
-  using base_type::difference_type;
-  using base_type::iterator;
-  using base_type::pointer;
-  using base_type::reference;
-  using base_type::reverse_iterator;
-  using base_type::size_type;
-  using base_type::value_type;
+  using allocator_type = typename base_type::allocator_type;
+  using const_iterator = typename base_type::const_iterator;
+  using const_pointer = typename base_type::const_pointer;
+  using const_reference = typename base_type::const_reference;
+  using const_reverse_iterator = typename base_type::const_reverse_iterator;
+  using difference_type = typename base_type::difference_type;
+  using iterator = typename base_type::iterator;
+  using pointer = typename base_type::pointer;
+  using reference = typename base_type::reference;
+  using reverse_iterator = typename base_type::reverse_iterator;
+  using size_type = typename base_type::size_type;
+  using value_type = typename base_type::value_type;
 
   using base_type::operator[];
   using base_type::begin;

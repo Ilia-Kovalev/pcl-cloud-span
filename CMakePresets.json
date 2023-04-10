@@ -22,13 +22,6 @@
       }
     },
     {
-      "name": "vcpkg-win64-static",
-      "hidden": true,
-      "cacheVariables": {
-        "VCPKG_TARGET_TRIPLET": "x64-windows-static-md"
-      }
-    },
-    {
       "name": "cppcheck",
       "hidden": true,
       "cacheVariables": {
@@ -110,7 +103,7 @@
       "cacheVariables": {
         "ENABLE_COVERAGE": "ON",
         "CMAKE_BUILD_TYPE": "Coverage",
-        "CMAKE_CXX_FLAGS_COVERAGE": "-Og -g --coverage -fkeep-inline-functions -fkeep-static-functions",
+        "CMAKE_CXX_FLAGS_COVERAGE": "-Og -g --coverage -fkeep-static-functions",
         "CMAKE_EXE_LINKER_FLAGS_COVERAGE": "--coverage",
         "CMAKE_SHARED_LINKER_FLAGS_COVERAGE": "--coverage",
         "CMAKE_MAP_IMPORTED_CONFIG_COVERAGE": "Coverage;RelWithDebInfo;Release;Debug;"
@@ -148,7 +141,7 @@
     },
     {
       "name": "ci-windows",
-      "inherits": ["ci-build", "ci-win64", "dev-mode", "vcpkg", "vcpkg-win64-static"]
+      "inherits": ["ci-build", "ci-win64", "dev-mode", "vcpkg"]
     }
   ]
 }

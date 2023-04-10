@@ -27,4 +27,47 @@
 #define PCL_NO_PRECOMPILE
 
 #include <pcl_cloud_span/point_wrapper.h>
+
 #include <pcl_cloud_span/impl/point_cloud.h>
+
+namespace pcl_cloud_span {
+template <typename PointT, SpanType span_type>
+pcl::PointCloud<PointT>
+convertToPCL(const pcl::PointCloud<Spannable<PointT, span_type>>& in)
+{
+  pcl::PointCloud<PointT> out;
+  out.header = in.header;
+  out.points = {in.points.begin(), in.points.end()};
+  out.width = in.width;
+  out.height = in.height;
+  out.is_dense = in.is_dense;
+  out.sensor_origin_ = in.sensor_origin_;
+  out.sensor_orientation_ = in.sensor_orientation_;
+  return out;
+}
+
+template <typename PointT, SpanType span_type>
+pcl::PointCloud<PointT>
+convertToPCL(pcl::PointCloud<Spannable<PointT, span_type>>&& in)
+{
+  pcl::PointCloud<PointT> out;
+  out.header = in.header;
+  out.points = in.points.move_to_vector();
+  out.width = in.width;
+  out.height = in.height;
+  out.is_dense = in.is_dense;
+  out.sensor_origin_ = in.sensor_origin_;
+  out.sensor_orientation_ = in.sensor_orientation_;
+  return out;
+}
+
+template <typename PointT>
+pcl::PointCloud<Spannable<PointT, SpanType::ReadOnly>>
+makeCloudSpan(const PointT* data, std::uint32_t width, std::uint32_t height = 1)
+{
+  return {reinterpret_cast<const Spannable<PointT, SpanType::ReadOnly>*>(data),
+          width,
+          height};
+}
+
+} // namespace pcl_cloud_span
