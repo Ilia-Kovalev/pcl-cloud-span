@@ -20,6 +20,8 @@ function(add_example NAME)
   add_dependencies(run-examples "run_${NAME}")
 endfunction()
 
-add_example(empty_example)
+add_example(voxel_grid_benchmark)
+find_package(PCL REQUIRED COMPONENTS filters io)
+target_link_libraries(voxel_grid_benchmark PRIVATE ${PCL_LIBRARIES})
 
 add_folders(Example)
