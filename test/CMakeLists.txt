@@ -23,14 +23,16 @@ add_executable(pcl_cloud_span_test "source/filters_test.cpp")
 target_link_libraries(
     pcl_cloud_span_test PRIVATE
     pcl_cloud_span::pcl_cloud_span
-    GTest::gtest_main
+    GTest::gmock_main
     ${PCL_LIBRARIES}
 )
+
 target_compile_features(pcl_cloud_span_test PRIVATE cxx_std_14)
 if (MSVC)
   target_compile_options(pcl_cloud_span_test PRIVATE /bigobj)
 endif()
 
+gtest_add_tests(TARGET pcl_cloud_span_test)
 gtest_discover_tests(pcl_cloud_span_test)
 
 # ---- End-of-file commands ----
