@@ -46,13 +46,19 @@ convertToPCL(const pcl::PointCloud<Spannable<PointT, span_type>>& in)
   return out;
 }
 
-template <typename PointT, SpanType span_type>
+template <typename PointT>
 pcl::PointCloud<PointT>
-convertToPCL(pcl::PointCloud<Spannable<PointT, span_type>>&& in)
+convertToPCL(pcl::PointCloud<Spannable<PointT, SpanType::ReadOnly>>&& in)
 {
   pcl::PointCloud<PointT> out;
   out.header = in.header;
-  out.points = in.points.move_to_vector();
+
+  out.points = static_cast<pcl::PointCloud<PointT>::VectorType>(
+      *reinterpret_cast<impl::utils::span_or_vector<
+          PointT,
+          impl::utils::span_type::read_only,
+          typename pcl::PointCloud<PointT>::VectorType::allocator_type>*>(&in.points));
+
   out.width = in.width;
   out.height = in.height;
   out.is_dense = in.is_dense;
@@ -68,6 +74,14 @@ makeCloudSpan(const PointT* data, std::uint32_t width, std::uint32_t height = 1)
   return {reinterpret_cast<const Spannable<PointT, SpanType::ReadOnly>*>(data),
           width,
           height};
+}
+
+template <typename PointT>
+typename pcl::PointCloud<Spannable<PointT, SpanType::ReadOnly>>::Ptr
+makeCloudSpanPtr(const PointT* data, std::uint32_t width, std::uint32_t height = 1)
+{
+  return std::make_shared<pcl::PointCloud<Spannable<PointT, SpanType::ReadOnly>>>(
+      makeCloudSpan(data, width, height));
 }
 
 } // namespace pcl_cloud_span

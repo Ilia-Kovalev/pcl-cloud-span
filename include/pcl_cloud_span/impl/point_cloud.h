@@ -72,11 +72,11 @@ namespace pcl {
  *
  * \author Patrick Mihelich, Radu B. Rusu
  */
-template <typename PointTT>
+template <typename PurePointT>
 class PCL_EXPORTS
-    PointCloud<pcl_cloud_span::Spannable<PointTT, pcl_cloud_span::SpanType::ReadOnly>> {
+    PointCloud<pcl_cloud_span::Spannable<PurePointT, pcl_cloud_span::SpanType::ReadOnly>> {
 public:
-  using PointT = pcl_cloud_span::Spannable<PointTT, pcl_cloud_span::SpanType::ReadOnly>;
+  using PointT = pcl_cloud_span::Spannable<PurePointT, pcl_cloud_span::SpanType::ReadOnly>;
 
   /** \brief Default constructor. Sets \ref is_dense to true, \ref width
    * and \ref height to 0, and the \ref sensor_origin_ and \ref
