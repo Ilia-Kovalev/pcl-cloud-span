@@ -4,6 +4,7 @@
 build/
 cmake-build-*/
 prefix/
+data/
 **/.DS_Store
 CMakeLists.txt.user
 CMakeUserPresets.json

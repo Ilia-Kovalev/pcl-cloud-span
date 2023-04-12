@@ -68,13 +68,21 @@ public:
   : vector_(allocator), span_(data, count), current_span_(data, count), is_span_(true)
   {}
 
-  std::vector<T>
-  move_to_vector()
+  explicit operator vector_type() const&
+  {
+    if (is_span()) {
+      return vector_type(begin(), end());
+    }
+    else {
+      return vector_;
+    }
+  }
+
+  explicit operator vector_type() &&
   {
     vector_type result;
 
     if (is_vector()) {
-
       result = std::move(vector_);
     }
     else {
@@ -268,9 +276,9 @@ protected:
     return vector_;
   }
 
-  template <
-      typename F,
-      typename = std::enable_if_t<std::is_void<std::result_of_t<F(vector_type&)>>::value>>
+  template <typename F,
+            typename = std::enable_if_t<
+                std::is_void<std::result_of_t<F(vector_type&)>>::value>>
   void
   modify_vector(F&& operation)
   {
@@ -280,9 +288,9 @@ protected:
     update_span();
   }
 
-  template <
-      typename F,
-      typename = std::enable_if_t<!std::is_void<std::result_of_t<F(vector_type&)>>::value>>
+  template <typename F,
+            typename = std::enable_if_t<
+                !std::is_void<std::result_of_t<F(vector_type&)>>::value>>
   std::result_of_t<F(vector_type&)>
   modify_vector(F&& operation)
   {
