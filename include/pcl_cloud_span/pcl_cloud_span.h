@@ -53,7 +53,7 @@ convertToPCL(pcl::PointCloud<Spannable<PointT, SpanType::ReadOnly>>&& in)
   pcl::PointCloud<PointT> out;
   out.header = in.header;
 
-  out.points = static_cast<pcl::PointCloud<PointT>::VectorType>(
+  out.points = static_cast<typename pcl::PointCloud<PointT>::VectorType>(
       *reinterpret_cast<impl::utils::span_or_vector<
           PointT,
           impl::utils::span_type::read_only,

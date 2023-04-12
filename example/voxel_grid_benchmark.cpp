@@ -4,6 +4,7 @@
 #include <pcl/filters/voxel_grid.h>
 #include <pcl/io/ply_io.h>
 #include <pcl/point_types.h>
+#include <pcl/register_point_struct.h>
 
 #include <chrono>
 #include <iostream>
@@ -35,7 +36,9 @@ using SpannablePoint = Spannable<Point, SpanType::ReadOnly>;
 using CloudSpan = pcl::PointCloud<SpannablePoint>;
 using Cloud = pcl::PointCloud<Point>;
 
+// cppcheck-suppress unknownMacro
 POINT_CLOUD_REGISTER_POINT_STRUCT(Point, (float, x, x)(float, y, y)(float, z, z))
+// cppcheck-suppress unknownMacro
 POINT_CLOUD_REGISTER_POINT_STRUCT(SpannablePoint,
                                   (float, x, x)(float, y, y)(float, z, z))
 
@@ -62,7 +65,7 @@ main(int argc, char* argv[])
   }
 
   const pcl::PCLPointCloud2ConstPtr in_cloud = [&]() {
-    const auto cloud = std::make_shared<pcl::PCLPointCloud2>();
+    auto cloud = std::make_shared<pcl::PCLPointCloud2>();
     if (pcl::io::loadPLYFile(argv[1], *cloud) == -1) {
       PCL_ERROR("Unable to read file");
       throw std::runtime_error("");
@@ -71,11 +74,14 @@ main(int argc, char* argv[])
   }();
 
   const float leaf_size = std::stof(argv[2]);
-  const int min_points_per_voxel = std::stoi(argv[3]);
-  if (min_points_per_voxel <= 1) {
-    PCL_ERROR("min_points_per_voxel should be > 0");
-    return 1;
-  }
+  const unsigned int min_points_per_voxel = [&]() {
+    const int v = std::stoi(argv[3]);
+    if (v <= 1) {
+      PCL_ERROR("min_points_per_voxel should be > 0");
+      throw std::runtime_error("");
+    }
+    return static_cast<unsigned int>(v);
+  }();
 
   auto const setupFilter = [&](auto& filter) {
     filter.setLeafSize(leaf_size, leaf_size, leaf_size);
@@ -133,7 +139,7 @@ main(int argc, char* argv[])
 
   };
 
-  for (const auto c : cases) {
+  for (const auto& c : cases) {
     std::string name;
     CaseOperation op;
     std::tie(name, op) = c;
