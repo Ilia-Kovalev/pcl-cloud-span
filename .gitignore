@@ -8,3 +8,4 @@ data/
 **/.DS_Store
 CMakeLists.txt.user
 CMakeUserPresets.json
+/data

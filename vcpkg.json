@@ -5,10 +5,6 @@
     {
       "name": "pcl",
       "version>=": "1.13.0"
-    },
-    {
-      "name": "boost-core",
-      "version>=": "1.78.0"
     }
   ],
   "default-features": [],

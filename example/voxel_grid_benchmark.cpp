@@ -12,7 +12,6 @@
 using pcl_cloud_span::convertToPCL;
 using pcl_cloud_span::makeCloudSpanPtr;
 using pcl_cloud_span::Spannable;
-using pcl_cloud_span::SpanType;
 
 struct Point {
   union {
@@ -32,7 +31,7 @@ operator<<(std::ostream& o, const Point& p)
   return o << '(' << p.x << ", " << p.y << ", " << p.z << ')';
 }
 
-using SpannablePoint = Spannable<Point, SpanType::ReadOnly>;
+using SpannablePoint = Spannable<Point>;
 using CloudSpan = pcl::PointCloud<SpannablePoint>;
 using Cloud = pcl::PointCloud<Point>;
 
@@ -64,7 +63,7 @@ main(int argc, char* argv[])
     return 1;
   }
 
-  const pcl::PCLPointCloud2ConstPtr in_cloud = [&]() {
+  const pcl::PCLPointCloud2Ptr in_cloud = [&]() {
     auto cloud = std::make_shared<pcl::PCLPointCloud2>();
     if (pcl::io::loadPLYFile(argv[1], *cloud) == -1) {
       PCL_ERROR("Unable to read file");
@@ -126,7 +125,7 @@ main(int argc, char* argv[])
          pcl::PointCloud<Point> out;
          const auto duration = measureTime([&]() {
            const auto in =
-               makeCloudSpanPtr(reinterpret_cast<const Point*>(in_cloud->data.data()),
+               makeCloudSpanPtr(reinterpret_cast<Point*>(in_cloud->data.data()),
                                 in_cloud->width,
                                 in_cloud->height);
            filter.setInputCloud(in);
