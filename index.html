@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>PCL Cloud Span | pcl_cloud_span</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">pcl_cloud_span</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path id="m-doc-search-icon-path" d="m6 0c-3.31 0-6 2.69-6 6 0 3.31 2.69 6 6 6 1.49 0 2.85-0.541 3.89-1.44-0.0164 0.338 0.147 0.759 0.5 1.15l3.22 3.79c0.552 0.614 1.45 0.665 2 0.115 0.55-0.55 0.499-1.45-0.115-2l-3.79-3.22c-0.392-0.353-0.812-0.515-1.15-0.5 0.895-1.05 1.44-2.41 1.44-3.89 0-3.31-2.69-6-6-6zm0 1.56a4.44 4.44 0 0 1 4.44 4.44 4.44 4.44 0 0 1-4.44 4.44 4.44 4.44 0 0 1-4.44-4.44 4.44 4.44 0 0 1 4.44-4.44z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li>
+              <a href="pages.html">Pages</a>
+              <ol>
+                <li><a href="about.html">About</a></li>
+              </ol>
+            </li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="3">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <use href="#m-doc-search-icon-path" />
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          PCL Cloud Span
+        </h1>
+<p><a name="md_README"></a><a href="https://github.com/Tristis116/pcl-cloud-span/actions/workflows/ci.yml"><img class="m-image" src="https://github.com/Tristis116/pcl-cloud-span/actions/workflows/ci.yml/badge.svg" alt="Image" /></a></p><p>Header-only cross-platform library to pass existing point cloud data in arbitrary format to PCL (Point Cloud Library) algorithms without unnecessary copy.</p><section id="autotoc_md1"><h2><a href="#autotoc_md1">Rationale</a></h2><p>Point cloud is a data structure that can have enormous memory footprint. Because of that it may be very expensive to copy, especially on embedded platforms.</p><p>PCL stores point cloud data as <code>std::vector</code> of one of PCL point types. So if you have a point cloud in another format (for example, ROS <code>PointCloud2</code>), you have to copy the whole point cloud to use it as input to PCL algorithms.</p><p>Eliminating redundant copying allows to improve point cloud processing speed in pipelines that are not pure PCL from end to end.</p></section><section id="autotoc_md2"><h2><a href="#autotoc_md2">How it works</a></h2><p>PCL heavily uses templates across the whole library to generalize point cloud processing algorithms for all types of points including custom point types. A container for points is a templated class <code>pcl::PointCloud&lt;PointT&gt;</code>.</p><p>This library utilizes this template nature of PCL to specialize <code>pcl::PointCloud</code> for special point type. This specialization could use <code>std::span</code>-like wrapper to access to points data via pointer to it, but some of PCL algorithms (for example, filters) has the same type for input and output point cloud. So it is impossible to use just <code>std::span</code>-like wrapper because PCL algorithms need to create a new point cloud inside.</p><p>To solve this problem this library uses a special container that has the same interface and behavior as <code>std::vector</code>, but can be initialized as a span over a pointer to non-PCL data. See <a href="https://github.com/Tristis116/span-or-vector">span_<wbr />or_<wbr />vector</a> for more details about the container.</p></section><section id="autotoc_md3"><h2><a href="#autotoc_md3">Usage</a></h2><p>Here is a minimal example how to use this library with <code>pcl::VoxelGrid</code> and point cloud data in ROS format:</p><pre class="m-code"><span class="c1">// Include the main header of this library</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;pcl_cloud_span/pcl_cloud_span.h&gt;</span>
+
+<span class="c1">// Include necessary PCL headers</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;pcl/filters/voxel_grid.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;pcl/point_types.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;pcl/register_point_struct.h&gt;</span>
+
+
+<span class="c1">// Wrap a point type you use with `Spannable` template class and register it in the</span>
+<span class="c1">// GLOBAL scope. This should be done only once per point type.</span>
+<span class="c1">//</span>
+<span class="c1">// The wrapped point type has the same fields as a point type it wraps, so</span>
+<span class="c1">// you can just copy registration code from pcl/impl/point_types.hpp file and wrap the</span>
+<span class="c1">// point type name with `Spannable` template.</span>
+<span class="n">POINT_CLOUD_REGISTER_POINT_STRUCT</span><span class="p">(</span><span class="n">pcl_cloud_span</span><span class="o">::</span><span class="n">Spannable</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZI</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">                                  </span><span class="p">(</span><span class="kt">float</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">)(</span><span class="kt">float</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)(</span><span class="kt">float</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">)(</span><span class="kt">float</span><span class="p">,</span>
+<span class="w">                                                                          </span><span class="n">intensity</span><span class="p">,</span>
+<span class="w">                                                                          </span><span class="n">intensity</span><span class="p">))</span>
+
+<span class="c1">// Function that downsamples point cloud of ROS format and returns result as</span>
+<span class="c1">// pcl::PointCloud</span>
+<span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZI</span><span class="o">&gt;</span>
+<span class="n">downsample</span><span class="p">(</span><span class="n">pcl</span><span class="o">::</span><span class="n">PCLPointCloud2</span><span class="o">&amp;</span><span class="w"> </span><span class="n">input</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="c1">// Create filter</span>
+<span class="w">  </span><span class="n">pcl</span><span class="o">::</span><span class="n">VoxelGrid</span><span class="o">&lt;</span><span class="n">pcl_cloud_span</span><span class="o">::</span><span class="n">Spannable</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZI</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">filter</span><span class="p">;</span>
+<span class="w">  </span><span class="n">filter</span><span class="p">.</span><span class="n">setLeafSize</span><span class="p">(</span><span class="mf">.1</span><span class="p">,</span><span class="w"> </span><span class="mf">.1</span><span class="p">,</span><span class="w"> </span><span class="mf">.1</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Create point cloud span</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">cloud_span</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pcl_cloud_span</span><span class="o">::</span><span class="n">makeCloudSpanPtr</span><span class="p">(</span>
+<span class="w">      </span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZI</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">data</span><span class="p">()),</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">height</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Set the span to filter as input</span>
+<span class="w">  </span><span class="n">filter</span><span class="p">.</span><span class="n">setInputCloud</span><span class="p">(</span><span class="n">cloud_span</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Get filtered point cloud</span>
+<span class="w">  </span><span class="n">pcl</span><span class="o">::</span><span class="n">PointCloud</span><span class="o">&lt;</span><span class="n">pcl_cloud_span</span><span class="o">::</span><span class="n">Spannable</span><span class="o">&lt;</span><span class="n">pcl</span><span class="o">::</span><span class="n">PointXYZI</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<span class="w">  </span><span class="n">filter</span><span class="p">.</span><span class="n">filter</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Return the output as pcl::PointCloud&lt;pcl::PointXYZI&gt; without copying point data</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">pcl_cloud_span</span><span class="o">::</span><span class="n">convertToPCL</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+<span class="p">}</span></pre><section id="autotoc_md4"><h3><a href="#autotoc_md4">Important note for using pcl::PointXYZ</a></h3><p><code>pcl::PointXYZ</code> represents 3D points but in fact it is a structure of 4 floats. So it you use it with a cloud span with 3D point data then you&#x27;ll go out of range. To avoid it you should create a custom 3D point type. You can use <a href="example/voxel_grid_benchmark.cpp">this example</a> to see how it can be implemented.</p></section></section><section id="autotoc_md5"><h2><a href="#autotoc_md5">Performance test</a></h2><p><a href="example/voxel_grid_benchmark.cpp">The test</a> imitates ROS environment with PointCloud2 point cloud as an input. Then pcl::VoxelGrid is applied. The result of the whole pipeline is <code>pcl::PointCloud</code> that can be used later in usual way. Only downsampling process with necessary type conversions is measured.</p><p>Input data is Lucy sample from <a href="http://graphics.stanford.edu/data/3Dscanrep/">Stanford dataset</a>. It&#x27;s a point cloud of 58,241,932 points with only XYZ coordinates.</p><p>Downsampling parameters:</p><ul><li>leaf size = 5</li><li>min points per voxel = 20</li></ul><p>Platform:</p><ul><li>compiler: MSVC 143</li><li>CPU: AMD Ryzen 5 3600X</li></ul><p>Test cases:</p><p>1) Using <code>pcl::PCLPointCloud2</code> as is and then converting it to <code>pcl::PointCloud</code> 2) Convert to <code>pcl::PointCloud</code> before filter and leave output without changes 3) Use a cloud span over input data and convert result to regular <code>pcl::PointCloud</code> type.</p><p>Average processing time for 10 runs:</p><table class="m-table"><thead><tr><th>Test case</th><th>Average time</th></tr></thead><tbody><tr><td>1. native PointCloud2</td><td>0.7855245</td></tr><tr><td>2. native PointCloud</td><td>0.5327120</td></tr><tr><td>3. cloud span</td><td>0.4956996</td></tr></tbody></table><p>In this conditions cloud span usage provides 7.5% speed-up because of unnecessary copying elimination.</p></section><section id="autotoc_md6"><h2><a href="#autotoc_md6">Building and installing</a></h2><p>See the BUILDING document.</p></section><section id="autotoc_md7"><h2><a href="#autotoc_md7">Contributing</a></h2><p>See the CONTRIBUTING document.</p></section><section id="autotoc_md8"><h2><a href="#autotoc_md8">Licensing</a></h2><p>See the <a href="LICENSE.txt">LICENSE</a> document</p></section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search-v1.js"></script>
+<script src="searchdata-v1.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>pcl_cloud_span. Created with <a href="https://doxygen.org/">Doxygen</a> 1.9.1 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

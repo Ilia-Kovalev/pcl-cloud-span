@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>pcl::PointCloud&lt;pcl_cloud_span::Spannable&lt;PurePointT&gt;&gt; class | pcl_cloud_span</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">pcl_cloud_span</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path id="m-doc-search-icon-path" d="m6 0c-3.31 0-6 2.69-6 6 0 3.31 2.69 6 6 6 1.49 0 2.85-0.541 3.89-1.44-0.0164 0.338 0.147 0.759 0.5 1.15l3.22 3.79c0.552 0.614 1.45 0.665 2 0.115 0.55-0.55 0.499-1.45-0.115-2l-3.79-3.22c-0.392-0.353-0.812-0.515-1.15-0.5 0.895-1.05 1.44-2.41 1.44-3.89 0-3.31-2.69-6-6-6zm0 1.56a4.44 4.44 0 0 1 4.44 4.44 4.44 4.44 0 0 1-4.44 4.44 4.44 4.44 0 0 1-4.44-4.44 4.44 4.44 0 0 1 4.44-4.44z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li>
+              <a href="pages.html">Pages</a>
+              <ol>
+                <li><a href="about.html">About</a></li>
+              </ol>
+            </li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="3">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <use href="#m-doc-search-icon-path" />
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="point__cloud_8h.html">&lt;point_cloud.h&gt;</a></div>
+          <div class="m-doc-template">template&lt;typename PurePointT&gt;</div>
+          <span class="m-breadcrumb"><a href="namespacepcl.html">pcl</a>::<wbr/></span>PointCloud&lt;pcl_cloud_span::Spannable&lt;PurePointT&gt;&gt; <span class="m-thin">class</span>
+        </h1>
+        <p>pcl::PointCloud template specialization that uses span_or_vector for points data instead of std::vector.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#pub-static-methods">Public static functions</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#pub-attribs">Public variables</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<p>This specialization is a copy of pcl::PointCloud with a couple of changes:</p><ul><li>extra constructor PointCloud(PointT* data, std::uint32_t width_, std::uint32_t height_ = 1) to initialize point cloud as a span over existing data</li><li>span_or_vector as container for points instead of std::vector</li></ul>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt id="ad754f0ae7d6476f0c002049217a2115e">
+              using <a href="#ad754f0ae7d6476f0c002049217a2115e" class="m-doc-self">PointT</a> = <a href="structpcl__cloud__span_1_1Spannable.html" class="m-doc">pcl_cloud_span::<wbr />Spannable</a>&lt;PurePointT&gt;
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a4b6ce8359547b71d6c8a57435b67355a">
+              using <a href="#a4b6ce8359547b71d6c8a57435b67355a" class="m-doc-self">PointType</a> = <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="ab3face0e00bea22a9be5f6bcb9e69791">
+              using <a href="#ab3face0e00bea22a9be5f6bcb9e69791" class="m-doc-self">VectorType</a> = span_or_vector::span_or_vector&lt;<a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>, Eigen::aligned_allocator&lt;<a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&gt;&gt;
+            </dt>
+            <dd><span></span></dd>
+            <dt id="ac5b2ec70efd21cab3196425bb22053e7">
+              using <a href="#ac5b2ec70efd21cab3196425bb22053e7" class="m-doc-self">CloudVectorType</a> = std::vector&lt;<a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#a08c87600daad41c317ddf63da99c503b" class="m-doc">PointCloud</a>&lt;<a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&gt;, Eigen::aligned_allocator&lt;<a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#a08c87600daad41c317ddf63da99c503b" class="m-doc">PointCloud</a>&lt;<a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&gt;&gt;&gt;
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a339aafccd71ccb0a0a9f8a100623095e">
+              using <a href="#a339aafccd71ccb0a0a9f8a100623095e" class="m-doc-self">Ptr</a> = shared_ptr&lt;<a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#a08c87600daad41c317ddf63da99c503b" class="m-doc">PointCloud</a>&lt;<a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&gt;&gt;
+            </dt>
+            <dd><span></span></dd>
+            <dt id="ae418d124c0c036f56539629c1612fcd4">
+              using <a href="#ae418d124c0c036f56539629c1612fcd4" class="m-doc-self">ConstPtr</a> = shared_ptr&lt;const <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#a08c87600daad41c317ddf63da99c503b" class="m-doc">PointCloud</a>&lt;<a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&gt;&gt;
+            </dt>
+            <dd><span></span></dd>
+            <dt id="ad938226aee0079e1464375e514a80d2c">
+              using <a href="#ad938226aee0079e1464375e514a80d2c" class="m-doc-self">value_type</a> = <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="acf40271a601d0988928f5160624bd8a8">
+              using <a href="#acf40271a601d0988928f5160624bd8a8" class="m-doc-self">reference</a> = <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&amp;
+            </dt>
+            <dd><span></span></dd>
+            <dt id="abf7151b540d123b4d41e895b0469fe6a">
+              using <a href="#abf7151b540d123b4d41e895b0469fe6a" class="m-doc-self">const_reference</a> = const <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&amp;
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a2494d8d89fdda594f47fd013725df469">
+              using <a href="#a2494d8d89fdda594f47fd013725df469" class="m-doc-self">difference_type</a> = typename VectorType::difference_type
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a1b6eba171d95638186e4a44f75f4fc08">
+              using <a href="#a1b6eba171d95638186e4a44f75f4fc08" class="m-doc-self">size_type</a> = typename VectorType::size_type
+            </dt>
+            <dd><span></span></dd>
+            <dt id="aabe54c4f724e87352e04d5c7f45d2ddb">
+              using <a href="#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc-self">iterator</a> = typename VectorType::iterator
+            </dt>
+            <dd><span></span></dd>
+            <dt id="ae275cf365c9eff8bbfa047ee5a008aac">
+              using <a href="#ae275cf365c9eff8bbfa047ee5a008aac" class="m-doc-self">const_iterator</a> = typename VectorType::const_iterator
+            </dt>
+            <dd><span></span></dd>
+            <dt id="ab4d3c9908ec95888acf82cb678ac7a19">
+              using <a href="#ab4d3c9908ec95888acf82cb678ac7a19" class="m-doc-self">reverse_iterator</a> = typename VectorType::reverse_iterator
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a9ddcf82e2e967b5f45e00554b2b69393">
+              using <a href="#a9ddcf82e2e967b5f45e00554b2b69393" class="m-doc-self">const_reverse_iterator</a> = typename VectorType::const_reverse_iterator
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+        <section id="pub-static-methods">
+          <h2><a href="#pub-static-methods">Public static functions</a></h2>
+          <dl class="m-doc">
+            <dt id="adfef0c3d67a5b2401888ef29f3be1542">
+              <span class="m-doc-wrap-bumper">static auto <a href="#adfef0c3d67a5b2401888ef29f3be1542" class="m-doc-self">concatenate</a>(</span><span class="m-doc-wrap">pcl::PointCloud&lt;<a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&gt;&amp; cloud1,
+              const pcl::PointCloud&lt;<a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&gt;&amp; cloud2) -&gt; bool</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a272abe76d66f2b3d5a5ef8fa721f05b7">
+              <span class="m-doc-wrap-bumper">static auto <a href="#a272abe76d66f2b3d5a5ef8fa721f05b7" class="m-doc-self">concatenate</a>(</span><span class="m-doc-wrap">const pcl::PointCloud&lt;<a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&gt;&amp; cloud1,
+              const pcl::PointCloud&lt;<a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&gt;&amp; cloud2,
+              pcl::PointCloud&lt;<a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&gt;&amp; cloud_out) -&gt; bool</span>
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt id="a08c87600daad41c317ddf63da99c503b">
+              <span class="m-doc-wrap-bumper"><a href="#a08c87600daad41c317ddf63da99c503b" class="m-doc-self">PointCloud</a>(</span><span class="m-doc-wrap">) <span class="m-label m-flat m-info">defaulted</span></span>
+            </dt>
+            <dd>Default constructor. Sets <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#a31497890138df272c8a323dd0b64fbfa" class="m-doc">is_<wbr />dense</a> to true, <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ae689206727f6415dbe784a722781f6c1" class="m-doc">width</a> and <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad25256ea1638151e31645637b1a025e6" class="m-doc">height</a> to 0, and the <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#a31db5e60049c9f87a3a12a79db02de9b" class="m-doc">sensor_<wbr />origin_<wbr /></a> and <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#a350b252bdbc510e583d6eb0688a2b54a" class="m-doc">sensor_<wbr />orientation_<wbr /></a> to identity.</dd>
+            <dt id="a4ac69e3a7fb67270cf79f741468a1d45">
+              <span class="m-doc-wrap-bumper"><a href="#a4ac69e3a7fb67270cf79f741468a1d45" class="m-doc-self">PointCloud</a>(</span><span class="m-doc-wrap"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>* data,
+              std::uint32_t width_,
+              std::uint32_t height_ = 1)</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a00b1a39839a9d550f4b17744d8898421" class="m-doc">PointCloud</a>(</span><span class="m-doc-wrap">const PointCloud&lt;<a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&gt;&amp; pc,
+              const Indices&amp; indices)</span>
+            </dt>
+            <dd>Copy constructor from point cloud subset.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#aaf5f02bf85b4835e9bfaa8178b2f4a62" class="m-doc">PointCloud</a>(</span><span class="m-doc-wrap">std::uint32_t width_,
+              std::uint32_t height_,
+              const <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&amp; value_ = <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>())</span>
+            </dt>
+            <dd>Allocate constructor from point cloud subset.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5d97494bb2f4c4af0a3829537bc92070" class="m-doc">operator+=</a>(</span><span class="m-doc-wrap">const <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#a08c87600daad41c317ddf63da99c503b" class="m-doc">PointCloud</a>&amp; rhs) -&gt; <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#a08c87600daad41c317ddf63da99c503b" class="m-doc">PointCloud</a>&amp;</span>
+            </dt>
+            <dd>Add a point cloud to the current cloud.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a4e4391bb8cdda6fa429ae193f697f51e" class="m-doc">operator+</a>(</span><span class="m-doc-wrap">const <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#a08c87600daad41c317ddf63da99c503b" class="m-doc">PointCloud</a>&amp; rhs) -&gt; <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#a08c87600daad41c317ddf63da99c503b" class="m-doc">PointCloud</a></span>
+            </dt>
+            <dd>Add a point cloud to another cloud.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab822bd4ce36c3380a90175cdcec73e20" class="m-doc">at</a>(</span><span class="m-doc-wrap">int column,
+              int row) const -&gt; const <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&amp;</span>
+            </dt>
+            <dd>Obtain the point given by the (column, row) coordinates. Only works on organized datasets (those that have height != 1).</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a567a5d10cae10456248286aff9411ed9" class="m-doc">at</a>(</span><span class="m-doc-wrap">int column,
+              int row) -&gt; <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&amp;</span>
+            </dt>
+            <dd>Obtain the point given by the (column, row) coordinates. Only works on organized datasets (those that have height != 1).</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a1231088a07f715514beca8dc956d4b87" class="m-doc">operator()</a>(</span><span class="m-doc-wrap">std::size_t column,
+              std::size_t row) const -&gt; const <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&amp;</span>
+            </dt>
+            <dd>Obtain the point given by the (column, row) coordinates. Only works on organized datasets (those that have height != 1).</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#adb246535046201c67843076602e057cd" class="m-doc">operator()</a>(</span><span class="m-doc-wrap">std::size_t column,
+              std::size_t row) -&gt; <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&amp;</span>
+            </dt>
+            <dd>Obtain the point given by the (column, row) coordinates. Only works on organized datasets (those that have height != 1).</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a9fc0733da4bbbf606e90db951e172932" class="m-doc">isOrganized</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Return whether a dataset is organized (e.g., arranged in a structured grid).</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a62866ba4b911d0d8ba07410d44abc3fd" class="m-doc">getMatrixXfMap</a>(</span><span class="m-doc-wrap">int dim,
+              int stride,
+              int offset) -&gt; Eigen::Map&lt;Eigen::MatrixXf, Eigen::Aligned, Eigen::OuterStride&lt;&gt;&gt;</span>
+            </dt>
+            <dd>Return an Eigen MatrixXf (assumes float values) mapped to the specified dimensions of the PointCloud.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aedfa4396d4828d7070268c8281259d6e" class="m-doc">getMatrixXfMap</a>(</span><span class="m-doc-wrap">int dim,
+              int stride,
+              int offset) const -&gt; const Eigen::Map&lt;const Eigen::MatrixXf, Eigen::Aligned, Eigen::OuterStride&lt;&gt;&gt;</span>
+            </dt>
+            <dd>Return an Eigen MatrixXf (assumes float values) mapped to the specified dimensions of the PointCloud.</dd>
+            <dt id="a9336fb7e986a1b9463aa729ea6a80e9d">
+              <span class="m-doc-wrap-bumper">auto <a href="#a9336fb7e986a1b9463aa729ea6a80e9d" class="m-doc-self">getMatrixXfMap</a>(</span><span class="m-doc-wrap">) -&gt; Eigen::Map&lt;Eigen::MatrixXf, Eigen::Aligned, Eigen::OuterStride&lt;&gt;&gt;</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="aa10ff263bb36dd716127b2b96c352612">
+              <span class="m-doc-wrap-bumper">auto <a href="#aa10ff263bb36dd716127b2b96c352612" class="m-doc-self">getMatrixXfMap</a>(</span><span class="m-doc-wrap">) const -&gt; const Eigen::Map&lt;const Eigen::MatrixXf, Eigen::Aligned, Eigen::OuterStride&lt;&gt;&gt;</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="ae50b478f6f58e260747e65770ceedd5c">
+              <span class="m-doc-wrap-bumper">auto <a href="#ae50b478f6f58e260747e65770ceedd5c" class="m-doc-self">begin</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a> <span class="m-label m-flat m-success">noexcept</span></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a82c1ccb042886f3b1d6778f3c715d1fb">
+              <span class="m-doc-wrap-bumper">auto <a href="#a82c1ccb042886f3b1d6778f3c715d1fb" class="m-doc-self">end</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a> <span class="m-label m-flat m-success">noexcept</span></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a9ec7212fce3e3c76e90c40d766f4157c">
+              <span class="m-doc-wrap-bumper">auto <a href="#a9ec7212fce3e3c76e90c40d766f4157c" class="m-doc-self">begin</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ae275cf365c9eff8bbfa047ee5a008aac" class="m-doc">const_<wbr />iterator</a> <span class="m-label m-flat m-success">noexcept</span></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a713f1a1efb8b9a60065eebdf62f82c33">
+              <span class="m-doc-wrap-bumper">auto <a href="#a713f1a1efb8b9a60065eebdf62f82c33" class="m-doc-self">end</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ae275cf365c9eff8bbfa047ee5a008aac" class="m-doc">const_<wbr />iterator</a> <span class="m-label m-flat m-success">noexcept</span></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="ac1aaa2174a2681eb9dbd3d4eff90cfcb">
+              <span class="m-doc-wrap-bumper">auto <a href="#ac1aaa2174a2681eb9dbd3d4eff90cfcb" class="m-doc-self">cbegin</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ae275cf365c9eff8bbfa047ee5a008aac" class="m-doc">const_<wbr />iterator</a> <span class="m-label m-flat m-success">noexcept</span></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a64756817e7eeb97b7770bee5016f47fc">
+              <span class="m-doc-wrap-bumper">auto <a href="#a64756817e7eeb97b7770bee5016f47fc" class="m-doc-self">cend</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ae275cf365c9eff8bbfa047ee5a008aac" class="m-doc">const_<wbr />iterator</a> <span class="m-label m-flat m-success">noexcept</span></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a304ba4dbdc473f4310bb830bb7a6f0ff">
+              <span class="m-doc-wrap-bumper">auto <a href="#a304ba4dbdc473f4310bb830bb7a6f0ff" class="m-doc-self">rbegin</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ab4d3c9908ec95888acf82cb678ac7a19" class="m-doc">reverse_<wbr />iterator</a> <span class="m-label m-flat m-success">noexcept</span></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="abb06cd37d5dcd8eb9c1bc95a5a35d881">
+              <span class="m-doc-wrap-bumper">auto <a href="#abb06cd37d5dcd8eb9c1bc95a5a35d881" class="m-doc-self">rend</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ab4d3c9908ec95888acf82cb678ac7a19" class="m-doc">reverse_<wbr />iterator</a> <span class="m-label m-flat m-success">noexcept</span></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a101a9d50bbc6dfca730eb22803b83dfa">
+              <span class="m-doc-wrap-bumper">auto <a href="#a101a9d50bbc6dfca730eb22803b83dfa" class="m-doc-self">rbegin</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#a9ddcf82e2e967b5f45e00554b2b69393" class="m-doc">const_<wbr />reverse_<wbr />iterator</a> <span class="m-label m-flat m-success">noexcept</span></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="ab4ea6d2bed7d5d7a5877b4d350e5d6e8">
+              <span class="m-doc-wrap-bumper">auto <a href="#ab4ea6d2bed7d5d7a5877b4d350e5d6e8" class="m-doc-self">rend</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#a9ddcf82e2e967b5f45e00554b2b69393" class="m-doc">const_<wbr />reverse_<wbr />iterator</a> <span class="m-label m-flat m-success">noexcept</span></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="abecdb415c166f6968a6fa1617dba2a3f">
+              <span class="m-doc-wrap-bumper">auto <a href="#abecdb415c166f6968a6fa1617dba2a3f" class="m-doc-self">crbegin</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#a9ddcf82e2e967b5f45e00554b2b69393" class="m-doc">const_<wbr />reverse_<wbr />iterator</a> <span class="m-label m-flat m-success">noexcept</span></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a32c35954a85b6d8645ae3196487e0b39">
+              <span class="m-doc-wrap-bumper">auto <a href="#a32c35954a85b6d8645ae3196487e0b39" class="m-doc-self">crend</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#a9ddcf82e2e967b5f45e00554b2b69393" class="m-doc">const_<wbr />reverse_<wbr />iterator</a> <span class="m-label m-flat m-success">noexcept</span></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="af32287c8fbb25cff76c1642118e7c9a0">
+              <span class="m-doc-wrap-bumper">auto <a href="#af32287c8fbb25cff76c1642118e7c9a0" class="m-doc-self">size</a>(</span><span class="m-doc-wrap">) const -&gt; std::size_t</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a987bb089e10abe498fd8d780bb953113">
+              <span class="m-doc-wrap-bumper">auto <a href="#a987bb089e10abe498fd8d780bb953113" class="m-doc-self">max_size</a>(</span><span class="m-doc-wrap">) const -&gt; index_t <span class="m-label m-flat m-success">noexcept</span></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a85ce5f738c20d1b29f232dde014ba861">
+              <span class="m-doc-wrap-bumper">void <a href="#a85ce5f738c20d1b29f232dde014ba861" class="m-doc-self">reserve</a>(</span><span class="m-doc-wrap">std::size_t n)</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="aab68f7c16d2cd450d56a00d7c8390f6d">
+              <span class="m-doc-wrap-bumper">auto <a href="#aab68f7c16d2cd450d56a00d7c8390f6d" class="m-doc-self">empty</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a34eab35510bfdb9f0dd92590e72f69a0">
+              <span class="m-doc-wrap-bumper">auto <a href="#a34eab35510bfdb9f0dd92590e72f69a0" class="m-doc-self">data</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>* <span class="m-label m-flat m-success">noexcept</span></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a357246b1e405aab8766e16ed0c5c9b02">
+              <span class="m-doc-wrap-bumper">auto <a href="#a357246b1e405aab8766e16ed0c5c9b02" class="m-doc-self">data</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>* <span class="m-label m-flat m-success">noexcept</span></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a0680125f0e59171cc729b874f8eb896a" class="m-doc">resize</a>(</span><span class="m-doc-wrap">std::size_t count)</span>
+            </dt>
+            <dd>Resizes the container to contain <code>count</code> elements.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ab2d73490594448f4099cad8d0f6b203d" class="m-doc">resize</a>(</span><span class="m-doc-wrap">uindex_t new_width,
+              uindex_t new_height)</span>
+            </dt>
+            <dd>Resizes the container to contain <code>new_width * new_height</code> elements.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#afe7a46bc13fb9b346770a037a9ccdf4b" class="m-doc">resize</a>(</span><span class="m-doc-wrap">index_t count,
+              const <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&amp; value)</span>
+            </dt>
+            <dd>Resizes the container to contain count elements.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a1b398ad8285031a5896c2c3b534e4a1c" class="m-doc">resize</a>(</span><span class="m-doc-wrap">index_t new_width,
+              index_t new_height,
+              const <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&amp; value)</span>
+            </dt>
+            <dd>Resizes the container to contain count elements.</dd>
+            <dt id="a821334a6f3f2e2c1cf1fcb6a4567c406">
+              <span class="m-doc-wrap-bumper">auto <a href="#a821334a6f3f2e2c1cf1fcb6a4567c406" class="m-doc-self">operator[]</a>(</span><span class="m-doc-wrap">std::size_t n) const -&gt; const <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&amp;</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="ac20d0d7e238b3d1d375bb9ac727ebff8">
+              <span class="m-doc-wrap-bumper">auto <a href="#ac20d0d7e238b3d1d375bb9ac727ebff8" class="m-doc-self">operator[]</a>(</span><span class="m-doc-wrap">std::size_t n) -&gt; <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&amp;</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="af0568fb0c0f8d5ca84254af239f612c7">
+              <span class="m-doc-wrap-bumper">auto <a href="#af0568fb0c0f8d5ca84254af239f612c7" class="m-doc-self">at</a>(</span><span class="m-doc-wrap">std::size_t n) const -&gt; const <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&amp;</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a82475e6ae97eadb4c4711b861fc67d89">
+              <span class="m-doc-wrap-bumper">auto <a href="#a82475e6ae97eadb4c4711b861fc67d89" class="m-doc-self">at</a>(</span><span class="m-doc-wrap">std::size_t n) -&gt; <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&amp;</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a2d34c95c4cc7fab06ca4ad11f55cd9f9">
+              <span class="m-doc-wrap-bumper">auto <a href="#a2d34c95c4cc7fab06ca4ad11f55cd9f9" class="m-doc-self">front</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&amp;</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="aab8636d2f504da0d4a081eba1d8ac5b3">
+              <span class="m-doc-wrap-bumper">auto <a href="#aab8636d2f504da0d4a081eba1d8ac5b3" class="m-doc-self">front</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&amp;</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="ad97062dccddfd449d9e6de15055ab9b6">
+              <span class="m-doc-wrap-bumper">auto <a href="#ad97062dccddfd449d9e6de15055ab9b6" class="m-doc-self">back</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&amp;</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a6eb658c90fa6a399ef0579fb8b8c1096">
+              <span class="m-doc-wrap-bumper">auto <a href="#a6eb658c90fa6a399ef0579fb8b8c1096" class="m-doc-self">back</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&amp;</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a300d56e2d85a252f17ab7cc5efdd91e9" class="m-doc">assign</a>(</span><span class="m-doc-wrap">index_t count,
+              const <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&amp; value)</span>
+            </dt>
+            <dd>Replaces the points with <code>count</code> copies of <code>value</code></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a0a7f6abdbbedc69b87f6e5cc928fa863" class="m-doc">assign</a>(</span><span class="m-doc-wrap">index_t new_width,
+              index_t new_height,
+              const <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&amp; value)</span>
+            </dt>
+            <dd>Replaces the points with <code>new_width * new_height</code> copies of <code>value</code></dd>
+            <dt>
+              <div class="m-doc-template">template&lt;class InputIterator&gt;</div>
+              <span class="m-doc-wrap-bumper">void <a href="#afaa14ae3b20ac215ea50664f2ebee4c7" class="m-doc">assign</a>(</span><span class="m-doc-wrap">InputIterator first,
+              InputIterator last)</span>
+            </dt>
+            <dd>Replaces the points with copies of those in the range <code>[first, last)</code></dd>
+            <dt>
+              <div class="m-doc-template">template&lt;class InputIterator&gt;</div>
+              <span class="m-doc-wrap-bumper">void <a href="#a2ff8f72cba5b3bdff8d99dcfebe7d054" class="m-doc">assign</a>(</span><span class="m-doc-wrap">InputIterator first,
+              InputIterator last,
+              index_t new_width)</span>
+            </dt>
+            <dd>Replaces the points with copies of those in the range <code>[first, last)</code></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a1fc89e9158ae9771181503a7f8dcc8e4" class="m-doc">assign</a>(</span><span class="m-doc-wrap">std::initializer_list&lt;<a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&gt; ilist)</span>
+            </dt>
+            <dd>Replaces the points with the elements from the initializer list <code>ilist</code></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a4db2b6a1d2dafd4c46a1f204ad945491" class="m-doc">assign</a>(</span><span class="m-doc-wrap">std::initializer_list&lt;<a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&gt; ilist,
+              index_t new_width)</span>
+            </dt>
+            <dd>Replaces the points with the elements from the initializer list <code>ilist</code></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a2d3e2ca392e8337127d199e1f9acbb6b" class="m-doc">push_back</a>(</span><span class="m-doc-wrap">const <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&amp; pt)</span>
+            </dt>
+            <dd>Insert a new point in the cloud, at the end of the container.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ad5015f2ef738f85c0751ce6779405e46" class="m-doc">transient_push_back</a>(</span><span class="m-doc-wrap">const <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&amp; pt)</span>
+            </dt>
+            <dd>Insert a new point in the cloud, at the end of the container.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;class... Args&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#aa6ef9a1419810fc482624a6708104e6a" class="m-doc">emplace_back</a>(</span><span class="m-doc-wrap">Args &amp;&amp; ... args) -&gt; <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#acf40271a601d0988928f5160624bd8a8" class="m-doc">reference</a></span>
+            </dt>
+            <dd>Emplace a new point in the cloud, at the end of the container.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;class... Args&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad711ee6f69463531f9909918437df18d" class="m-doc">transient_emplace_back</a>(</span><span class="m-doc-wrap">Args &amp;&amp; ... args) -&gt; <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#acf40271a601d0988928f5160624bd8a8" class="m-doc">reference</a></span>
+            </dt>
+            <dd>Emplace a new point in the cloud, at the end of the container.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a7cfc052ea24aedc167e72c1c5940e441" class="m-doc">insert</a>(</span><span class="m-doc-wrap"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a> position,
+              const <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&amp; pt) -&gt; <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a></span>
+            </dt>
+            <dd>Insert a new point in the cloud, given an iterator.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a03eacf40e2e9c3468198a66ba63a79c0" class="m-doc">transient_insert</a>(</span><span class="m-doc-wrap"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a> position,
+              const <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&amp; pt) -&gt; <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a></span>
+            </dt>
+            <dd>Insert a new point in the cloud, given an iterator.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#af72782aa04f3ccafd2792bcb33e9c2f7" class="m-doc">insert</a>(</span><span class="m-doc-wrap"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a> position,
+              std::size_t n,
+              const <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&amp; pt)</span>
+            </dt>
+            <dd>Insert a new point in the cloud N times, given an iterator.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a952bbac2318b3595857f8438dac8531f" class="m-doc">transient_insert</a>(</span><span class="m-doc-wrap"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a> position,
+              std::size_t n,
+              const <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&amp; pt)</span>
+            </dt>
+            <dd>Insert a new point in the cloud N times, given an iterator.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;class InputIterator&gt;</div>
+              <span class="m-doc-wrap-bumper">void <a href="#a098c49f497c273fa399d58eeee6b8069" class="m-doc">insert</a>(</span><span class="m-doc-wrap"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a> position,
+              InputIterator first,
+              InputIterator last)</span>
+            </dt>
+            <dd>Insert a new range of points in the cloud, at a certain position.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;class InputIterator&gt;</div>
+              <span class="m-doc-wrap-bumper">void <a href="#a6fa39d3b9a7b003fde6785bc2fcdb7b9" class="m-doc">transient_insert</a>(</span><span class="m-doc-wrap"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a> position,
+              InputIterator first,
+              InputIterator last)</span>
+            </dt>
+            <dd>Insert a new range of points in the cloud, at a certain position.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;class... Args&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a6644ce04596b2fcc9ddb961e6c179d29" class="m-doc">emplace</a>(</span><span class="m-doc-wrap"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a> position,
+              Args &amp;&amp; ... args) -&gt; <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a></span>
+            </dt>
+            <dd>Emplace a new point in the cloud, given an iterator.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;class... Args&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a287459a800434bb50e60e6d4e32b912d" class="m-doc">transient_emplace</a>(</span><span class="m-doc-wrap"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a> position,
+              Args &amp;&amp; ... args) -&gt; <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a></span>
+            </dt>
+            <dd>Emplace a new point in the cloud, given an iterator.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a9c290e1ee73998655cdf80d751ea3d1d" class="m-doc">erase</a>(</span><span class="m-doc-wrap"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a> position) -&gt; <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a></span>
+            </dt>
+            <dd>Erase a point in the cloud.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aa395dd48388d5d868f20ea7fd9e3f6b7" class="m-doc">transient_erase</a>(</span><span class="m-doc-wrap"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a> position) -&gt; <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a></span>
+            </dt>
+            <dd>Erase a point in the cloud.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a326e07fa546aa6157a61bd443ec9a9a7" class="m-doc">erase</a>(</span><span class="m-doc-wrap"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a> first,
+              <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a> last) -&gt; <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a></span>
+            </dt>
+            <dd>Erase a set of points given by a (first, last) iterator pair.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a749eef76482e1b156077c62bfdc2a5d1" class="m-doc">transient_erase</a>(</span><span class="m-doc-wrap"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a> first,
+              <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a> last) -&gt; <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a></span>
+            </dt>
+            <dd>Erase a set of points given by a (first, last) iterator pair.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a588ffec95314955362b58f6b807a7eaf" class="m-doc">swap</a>(</span><span class="m-doc-wrap"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#a08c87600daad41c317ddf63da99c503b" class="m-doc">PointCloud</a>&lt;<a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&gt;&amp; rhs)</span>
+            </dt>
+            <dd>Swap a point cloud with another cloud.</dd>
+            <dt id="ab9ac3f599c1a380ba889189f61cadd2d">
+              <span class="m-doc-wrap-bumper">void <a href="#ab9ac3f599c1a380ba889189f61cadd2d" class="m-doc-self">clear</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Removes all points in a cloud and sets the width and height to 0.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a448c776584893d87ddb6caec3f6a6196" class="m-doc">makeShared</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#a339aafccd71ccb0a0a9f8a100623095e" class="m-doc">Ptr</a></span>
+            </dt>
+            <dd>Copy the cloud to the heap and return a smart pointer Note that deep copy is performed, so avoid using this function on non-empty clouds. The changes of the returned cloud are not mirrored back to this one.</dd>
+          </dl>
+        </section>
+        <section id="pub-attribs">
+          <h2><a href="#pub-attribs">Public variables</a></h2>
+          <dl class="m-doc">
+            <dt id="a901fe728a91fc1bee4665138ab517502">
+              pcl::PCLHeader <a href="#a901fe728a91fc1bee4665138ab517502" class="m-doc-self">header</a>
+            </dt>
+            <dd>The point cloud header. It contains information about the acquisition time.</dd>
+            <dt id="a6f6b226e1909454edca7c4fc8ba7addb">
+              span_or_vector::span_or_vector&lt;<a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>, Eigen::aligned_allocator&lt;<a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&gt;&gt; <a href="#a6f6b226e1909454edca7c4fc8ba7addb" class="m-doc-self">points</a>
+            </dt>
+            <dd>The point data.</dd>
+            <dt id="ae689206727f6415dbe784a722781f6c1">
+              std::uint32_t <a href="#ae689206727f6415dbe784a722781f6c1" class="m-doc-self">width</a>
+            </dt>
+            <dd>The point cloud width (if organized as an image-structure).</dd>
+            <dt id="ad25256ea1638151e31645637b1a025e6">
+              std::uint32_t <a href="#ad25256ea1638151e31645637b1a025e6" class="m-doc-self">height</a>
+            </dt>
+            <dd>The point cloud height (if organized as an image-structure).</dd>
+            <dt id="a31497890138df272c8a323dd0b64fbfa">
+              bool <a href="#a31497890138df272c8a323dd0b64fbfa" class="m-doc-self">is_dense</a>
+            </dt>
+            <dd>True if no points are invalid (e.g., have NaN or Inf values in any of their floating point fields).</dd>
+            <dt id="a31db5e60049c9f87a3a12a79db02de9b">
+              Eigen::Vector4f <a href="#a31db5e60049c9f87a3a12a79db02de9b" class="m-doc-self">sensor_origin_</a>
+            </dt>
+            <dd>Sensor acquisition pose (origin/translation).</dd>
+            <dt id="a350b252bdbc510e583d6eb0688a2b54a">
+              Eigen::Quaternionf <a href="#a350b252bdbc510e583d6eb0688a2b54a" class="m-doc-self">sensor_orientation_</a>
+            </dt>
+            <dd>Sensor acquisition pose (rotation).</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a00b1a39839a9d550f4b17744d8898421"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename PurePointT&gt;
+              </div>
+              <span class="m-doc-wrap-bumper"> pcl::<wbr />PointCloud&lt;pcl_cloud_span::<wbr />Spannable&lt;PurePointT&gt;&gt;&lt;PurePointT&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a00b1a39839a9d550f4b17744d8898421" class="m-doc-self">PointCloud</a>(</span><span class="m-doc-wrap">const PointCloud&lt;<a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&gt;&amp; pc,
+              const Indices&amp; indices)</span></span>
+            </h3>
+            <p>Copy constructor from point cloud subset.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">pc&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>the cloud to copy into this</td>
+                </tr>
+                <tr>
+                  <td>indices&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>the subset to copy</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="aaf5f02bf85b4835e9bfaa8178b2f4a62"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename PurePointT&gt;
+              </div>
+              <span class="m-doc-wrap-bumper"> pcl::<wbr />PointCloud&lt;pcl_cloud_span::<wbr />Spannable&lt;PurePointT&gt;&gt;&lt;PurePointT&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aaf5f02bf85b4835e9bfaa8178b2f4a62" class="m-doc-self">PointCloud</a>(</span><span class="m-doc-wrap">std::uint32_t width_,
+              std::uint32_t height_,
+              const <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&amp; value_ = <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>())</span></span>
+            </h3>
+            <p>Allocate constructor from point cloud subset.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">width_&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>the cloud width</td>
+                </tr>
+                <tr>
+                  <td>height_&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>the cloud height</td>
+                </tr>
+                <tr>
+                  <td>value_&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>default value</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a5d97494bb2f4c4af0a3829537bc92070"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename PurePointT&gt;
+              </div>
+              <span class="m-doc-wrap-bumper"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#a08c87600daad41c317ddf63da99c503b" class="m-doc">PointCloud</a>&amp; pcl::<wbr />PointCloud&lt;pcl_cloud_span::<wbr />Spannable&lt;PurePointT&gt;&gt;&lt;PurePointT&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5d97494bb2f4c4af0a3829537bc92070" class="m-doc-self">operator+=</a>(</span><span class="m-doc-wrap">const <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#a08c87600daad41c317ddf63da99c503b" class="m-doc">PointCloud</a>&amp; rhs)</span></span>
+            </h3>
+            <p>Add a point cloud to the current cloud.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">rhs&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>the cloud to add to the current cloud</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>the new cloud as a concatenation of the current cloud and the new given cloud</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a4e4391bb8cdda6fa429ae193f697f51e"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename PurePointT&gt;
+              </div>
+              <span class="m-doc-wrap-bumper"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#a08c87600daad41c317ddf63da99c503b" class="m-doc">PointCloud</a> pcl::<wbr />PointCloud&lt;pcl_cloud_span::<wbr />Spannable&lt;PurePointT&gt;&gt;&lt;PurePointT&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4e4391bb8cdda6fa429ae193f697f51e" class="m-doc-self">operator+</a>(</span><span class="m-doc-wrap">const <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#a08c87600daad41c317ddf63da99c503b" class="m-doc">PointCloud</a>&amp; rhs)</span></span>
+            </h3>
+            <p>Add a point cloud to another cloud.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">rhs&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>the cloud to add to the current cloud</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>the new cloud as a concatenation of the current cloud and the new given cloud</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="ab822bd4ce36c3380a90175cdcec73e20"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename PurePointT&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">const <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&amp; pcl::<wbr />PointCloud&lt;pcl_cloud_span::<wbr />Spannable&lt;PurePointT&gt;&gt;&lt;PurePointT&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab822bd4ce36c3380a90175cdcec73e20" class="m-doc-self">at</a>(</span><span class="m-doc-wrap">int column,
+              int row) const</span></span>
+            </h3>
+            <p>Obtain the point given by the (column, row) coordinates. Only works on organized datasets (those that have height != 1).</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">column&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>the column coordinate</td>
+                </tr>
+                <tr>
+                  <td>row&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>the row coordinate</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a567a5d10cae10456248286aff9411ed9"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename PurePointT&gt;
+              </div>
+              <span class="m-doc-wrap-bumper"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&amp; pcl::<wbr />PointCloud&lt;pcl_cloud_span::<wbr />Spannable&lt;PurePointT&gt;&gt;&lt;PurePointT&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a567a5d10cae10456248286aff9411ed9" class="m-doc-self">at</a>(</span><span class="m-doc-wrap">int column,
+              int row)</span></span>
+            </h3>
+            <p>Obtain the point given by the (column, row) coordinates. Only works on organized datasets (those that have height != 1).</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">column&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>the column coordinate</td>
+                </tr>
+                <tr>
+                  <td>row&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>the row coordinate</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a1231088a07f715514beca8dc956d4b87"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename PurePointT&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">const <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&amp; pcl::<wbr />PointCloud&lt;pcl_cloud_span::<wbr />Spannable&lt;PurePointT&gt;&gt;&lt;PurePointT&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1231088a07f715514beca8dc956d4b87" class="m-doc-self">operator()</a>(</span><span class="m-doc-wrap">std::size_t column,
+              std::size_t row) const</span></span>
+            </h3>
+            <p>Obtain the point given by the (column, row) coordinates. Only works on organized datasets (those that have height != 1).</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">column&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>the column coordinate</td>
+                </tr>
+                <tr>
+                  <td>row&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>the row coordinate</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="adb246535046201c67843076602e057cd"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename PurePointT&gt;
+              </div>
+              <span class="m-doc-wrap-bumper"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&amp; pcl::<wbr />PointCloud&lt;pcl_cloud_span::<wbr />Spannable&lt;PurePointT&gt;&gt;&lt;PurePointT&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#adb246535046201c67843076602e057cd" class="m-doc-self">operator()</a>(</span><span class="m-doc-wrap">std::size_t column,
+              std::size_t row)</span></span>
+            </h3>
+            <p>Obtain the point given by the (column, row) coordinates. Only works on organized datasets (those that have height != 1).</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">column&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>the column coordinate</td>
+                </tr>
+                <tr>
+                  <td>row&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>the row coordinate</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a9fc0733da4bbbf606e90db951e172932"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename PurePointT&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">bool pcl::<wbr />PointCloud&lt;pcl_cloud_span::<wbr />Spannable&lt;PurePointT&gt;&gt;&lt;PurePointT&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9fc0733da4bbbf606e90db951e172932" class="m-doc-self">isOrganized</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Return whether a dataset is organized (e.g., arranged in a structured grid).</p>
+<aside class="m-note m-info"><h4>Note</h4><p>The height value must be different than 1 for a dataset to be organized.</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a62866ba4b911d0d8ba07410d44abc3fd"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename PurePointT&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">Eigen::Map&lt;Eigen::MatrixXf, Eigen::Aligned, Eigen::OuterStride&lt;&gt;&gt; pcl::<wbr />PointCloud&lt;pcl_cloud_span::<wbr />Spannable&lt;PurePointT&gt;&gt;&lt;PurePointT&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a62866ba4b911d0d8ba07410d44abc3fd" class="m-doc-self">getMatrixXfMap</a>(</span><span class="m-doc-wrap">int dim,
+              int stride,
+              int offset)</span></span>
+            </h3>
+            <p>Return an Eigen MatrixXf (assumes float values) mapped to the specified dimensions of the PointCloud.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">dim&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>the number of dimensions to consider for each point</td>
+                </tr>
+                <tr>
+                  <td>stride&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>the number of values in each point (will be the number of values that separate two of the columns)</td>
+                </tr>
+                <tr>
+                  <td>offset&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>the number of dimensions to skip from the beginning of each point (stride = offset + dim + x, where x is the number of dimensions to skip from the end of each point)</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>This method is for advanced users only! Use with care!</p></aside><aside class="m-note m-warning"><h4>Attention</h4><p>Compile time flags used for Eigen might affect the dimension of the Eigen::Map returned. If Eigen is using row major storage, the matrix shape would be (number of Points X elements in a Point) else the matrix shape would be (elements in a Point X number of Points). Essentially,</p><ul><li>Major direction: number of points in cloud</li><li>Minor direction: number of point dimensions By default, as of Eigen 3.3, Eigen uses Column major storage</li></ul></aside><aside class="m-note m-info"><h4>Note</h4><p>for getting only XYZ coordinates out of PointXYZ use dim=3, stride=4 and offset=0 due to the alignment.</p></aside><aside class="m-note m-warning"><h4>Attention</h4><p>PointT types are most of the time aligned, so the offsets are not continuous!</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aedfa4396d4828d7070268c8281259d6e"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename PurePointT&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">const Eigen::Map&lt;const Eigen::MatrixXf, Eigen::Aligned, Eigen::OuterStride&lt;&gt;&gt; pcl::<wbr />PointCloud&lt;pcl_cloud_span::<wbr />Spannable&lt;PurePointT&gt;&gt;&lt;PurePointT&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aedfa4396d4828d7070268c8281259d6e" class="m-doc-self">getMatrixXfMap</a>(</span><span class="m-doc-wrap">int dim,
+              int stride,
+              int offset) const</span></span>
+            </h3>
+            <p>Return an Eigen MatrixXf (assumes float values) mapped to the specified dimensions of the PointCloud.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">dim&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>the number of dimensions to consider for each point</td>
+                </tr>
+                <tr>
+                  <td>stride&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>the number of values in each point (will be the number of values that separate two of the columns)</td>
+                </tr>
+                <tr>
+                  <td>offset&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>the number of dimensions to skip from the beginning of each point (stride = offset + dim + x, where x is the number of dimensions to skip from the end of each point)</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>This method is for advanced users only! Use with care!</p></aside><aside class="m-note m-warning"><h4>Attention</h4><p>Compile time flags used for Eigen might affect the dimension of the Eigen::Map returned. If Eigen is using row major storage, the matrix shape would be (number of Points X elements in a Point) else the matrix shape would be (elements in a Point X number of Points). Essentially,</p><ul><li>Major direction: number of points in cloud</li><li>Minor direction: number of point dimensions By default, as of Eigen 3.3, Eigen uses Column major storage</li></ul></aside><aside class="m-note m-info"><h4>Note</h4><p>for getting only XYZ coordinates out of PointXYZ use dim=3, stride=4 and offset=0 due to the alignment.</p></aside><aside class="m-note m-warning"><h4>Attention</h4><p>PointT types are most of the time aligned, so the offsets are not continuous!</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a0680125f0e59171cc729b874f8eb896a"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename PurePointT&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">void pcl::<wbr />PointCloud&lt;pcl_cloud_span::<wbr />Spannable&lt;PurePointT&gt;&gt;&lt;PurePointT&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0680125f0e59171cc729b874f8eb896a" class="m-doc-self">resize</a>(</span><span class="m-doc-wrap">std::size_t count)</span></span>
+            </h3>
+            <p>Resizes the container to contain <code>count</code> elements.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">count&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>new size of the point cloud</td>
+                </tr>
+              </tbody>
+            </table>
+<ul><li>If the current size is greater than <code>count</code>, the pointcloud is reduced to its first <code>count</code> elements</li><li><p>If the current size is less than <code>count</code>, additional default-inserted points are appended</p><aside class="m-note m-info"><h4>Note</h4><p>This potentially breaks the organized structure of the cloud by setting the height to 1 IFF <code>width * height != count</code>!</p></aside></li></ul>
+          </div></section>
+          <section class="m-doc-details" id="ab2d73490594448f4099cad8d0f6b203d"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename PurePointT&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">void pcl::<wbr />PointCloud&lt;pcl_cloud_span::<wbr />Spannable&lt;PurePointT&gt;&gt;&lt;PurePointT&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab2d73490594448f4099cad8d0f6b203d" class="m-doc-self">resize</a>(</span><span class="m-doc-wrap">uindex_t new_width,
+              uindex_t new_height)</span></span>
+            </h3>
+            <p>Resizes the container to contain <code>new_width * new_height</code> elements.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">new_width&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>new width of the point cloud</td>
+                </tr>
+                <tr>
+                  <td>new_height&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>new height of the point cloud</td>
+                </tr>
+              </tbody>
+            </table>
+<ul><li>If the current size is greater than the requested size, the pointcloud is reduced to its first requested elements</li><li>If the current size is less then the requested size, additional default-inserted points are appended</li></ul>
+          </div></section>
+          <section class="m-doc-details" id="afe7a46bc13fb9b346770a037a9ccdf4b"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename PurePointT&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">void pcl::<wbr />PointCloud&lt;pcl_cloud_span::<wbr />Spannable&lt;PurePointT&gt;&gt;&lt;PurePointT&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#afe7a46bc13fb9b346770a037a9ccdf4b" class="m-doc-self">resize</a>(</span><span class="m-doc-wrap">index_t count,
+              const <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&amp; value)</span></span>
+            </h3>
+            <p>Resizes the container to contain count elements.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">count&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>new size of the point cloud</td>
+                </tr>
+                <tr>
+                  <td>value&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>the value to initialize the new points with</td>
+                </tr>
+              </tbody>
+            </table>
+<ul><li>If the current size is greater than <code>count</code>, the pointcloud is reduced to its first <code>count</code> elements</li><li><p>If the current size is less than <code>count</code>, additional copies of <code>value</code> are appended</p><aside class="m-note m-info"><h4>Note</h4><p>This potentially breaks the organized structure of the cloud by setting the height to 1 IFF <code>width * height != count</code>!</p></aside></li></ul>
+          </div></section>
+          <section class="m-doc-details" id="a1b398ad8285031a5896c2c3b534e4a1c"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename PurePointT&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">void pcl::<wbr />PointCloud&lt;pcl_cloud_span::<wbr />Spannable&lt;PurePointT&gt;&gt;&lt;PurePointT&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1b398ad8285031a5896c2c3b534e4a1c" class="m-doc-self">resize</a>(</span><span class="m-doc-wrap">index_t new_width,
+              index_t new_height,
+              const <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&amp; value)</span></span>
+            </h3>
+            <p>Resizes the container to contain count elements.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">new_width&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>new width of the point cloud</td>
+                </tr>
+                <tr>
+                  <td>new_height&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>new height of the point cloud</td>
+                </tr>
+                <tr>
+                  <td>value&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>the value to initialize the new points with</td>
+                </tr>
+              </tbody>
+            </table>
+<ul><li>If the current size is greater then the requested size, the pointcloud is reduced to its first requested elements</li><li>If the current size is less then the requested size, additional default-inserted points are appended</li></ul>
+          </div></section>
+          <section class="m-doc-details" id="a300d56e2d85a252f17ab7cc5efdd91e9"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename PurePointT&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">void pcl::<wbr />PointCloud&lt;pcl_cloud_span::<wbr />Spannable&lt;PurePointT&gt;&gt;&lt;PurePointT&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a300d56e2d85a252f17ab7cc5efdd91e9" class="m-doc-self">assign</a>(</span><span class="m-doc-wrap">index_t count,
+              const <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&amp; value)</span></span>
+            </h3>
+            <p>Replaces the points with <code>count</code> copies of <code>value</code></p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">count&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>new size of the point cloud</td>
+                </tr>
+                <tr>
+                  <td>value&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>value each point of the cloud should have</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>This breaks the organized structure of the cloud by setting the height to 1!</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a0a7f6abdbbedc69b87f6e5cc928fa863"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename PurePointT&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">void pcl::<wbr />PointCloud&lt;pcl_cloud_span::<wbr />Spannable&lt;PurePointT&gt;&gt;&lt;PurePointT&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0a7f6abdbbedc69b87f6e5cc928fa863" class="m-doc-self">assign</a>(</span><span class="m-doc-wrap">index_t new_width,
+              index_t new_height,
+              const <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&amp; value)</span></span>
+            </h3>
+            <p>Replaces the points with <code>new_width * new_height</code> copies of <code>value</code></p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">new_width&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>new width of the point cloud</td>
+                </tr>
+                <tr>
+                  <td>new_height&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>new height of the point cloud</td>
+                </tr>
+                <tr>
+                  <td>value&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>value each point of the cloud should have</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="afaa14ae3b20ac215ea50664f2ebee4c7"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename PurePointT&gt;
+                template&lt;class InputIterator&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">void pcl::<wbr />PointCloud&lt;pcl_cloud_span::<wbr />Spannable&lt;PurePointT&gt;&gt;&lt;PurePointT&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#afaa14ae3b20ac215ea50664f2ebee4c7" class="m-doc-self">assign</a>(</span><span class="m-doc-wrap">InputIterator first,
+              InputIterator last)</span></span>
+            </h3>
+            <p>Replaces the points with copies of those in the range <code>[first, last)</code></p>
+<p>The behavior is undefined if either argument is an iterator into <code>*this</code></p><aside class="m-note m-info"><h4>Note</h4><p>This breaks the organized structure of the cloud by setting the height to 1!</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a2ff8f72cba5b3bdff8d99dcfebe7d054"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename PurePointT&gt;
+                template&lt;class InputIterator&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">void pcl::<wbr />PointCloud&lt;pcl_cloud_span::<wbr />Spannable&lt;PurePointT&gt;&gt;&lt;PurePointT&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2ff8f72cba5b3bdff8d99dcfebe7d054" class="m-doc-self">assign</a>(</span><span class="m-doc-wrap">InputIterator first,
+              InputIterator last,
+              index_t new_width)</span></span>
+            </h3>
+            <p>Replaces the points with copies of those in the range <code>[first, last)</code></p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">first&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>the range from which the points are copied</td>
+                </tr>
+                <tr>
+                  <td>last&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>the range from which the points are copied</td>
+                </tr>
+                <tr>
+                  <td>new_width&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>new width of the point cloud</td>
+                </tr>
+              </tbody>
+            </table>
+<p>The behavior is undefined if either argument is an iterator into <code>*this</code></p><aside class="m-note m-info"><h4>Note</h4><p>This calculates the height based on size and width provided. This means the assignment happens even if the size is not perfectly divisible by width</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a1fc89e9158ae9771181503a7f8dcc8e4"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename PurePointT&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">void pcl::<wbr />PointCloud&lt;pcl_cloud_span::<wbr />Spannable&lt;PurePointT&gt;&gt;&lt;PurePointT&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1fc89e9158ae9771181503a7f8dcc8e4" class="m-doc-self">assign</a>(</span><span class="m-doc-wrap">std::initializer_list&lt;<a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&gt; ilist)</span></span>
+            </h3>
+            <p>Replaces the points with the elements from the initializer list <code>ilist</code></p>
+<aside class="m-note m-info"><h4>Note</h4><p>This breaks the organized structure of the cloud by setting the height to 1!</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a4db2b6a1d2dafd4c46a1f204ad945491"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename PurePointT&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">void pcl::<wbr />PointCloud&lt;pcl_cloud_span::<wbr />Spannable&lt;PurePointT&gt;&gt;&lt;PurePointT&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4db2b6a1d2dafd4c46a1f204ad945491" class="m-doc-self">assign</a>(</span><span class="m-doc-wrap">std::initializer_list&lt;<a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&gt; ilist,
+              index_t new_width)</span></span>
+            </h3>
+            <p>Replaces the points with the elements from the initializer list <code>ilist</code></p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">ilist&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>initializer list from which the points are copied</td>
+                </tr>
+                <tr>
+                  <td>new_width&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>new width of the point cloud</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>This calculates the height based on size and width provided. This means the assignment happens even if the size is not perfectly divisible by width</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a2d3e2ca392e8337127d199e1f9acbb6b"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename PurePointT&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">void pcl::<wbr />PointCloud&lt;pcl_cloud_span::<wbr />Spannable&lt;PurePointT&gt;&gt;&lt;PurePointT&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2d3e2ca392e8337127d199e1f9acbb6b" class="m-doc-self">push_back</a>(</span><span class="m-doc-wrap">const <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&amp; pt)</span></span>
+            </h3>
+            <p>Insert a new point in the cloud, at the end of the container.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">pt&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>the point to insert</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>This breaks the organized structure of the cloud by setting the height to 1!</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad5015f2ef738f85c0751ce6779405e46"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename PurePointT&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">void pcl::<wbr />PointCloud&lt;pcl_cloud_span::<wbr />Spannable&lt;PurePointT&gt;&gt;&lt;PurePointT&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad5015f2ef738f85c0751ce6779405e46" class="m-doc-self">transient_push_back</a>(</span><span class="m-doc-wrap">const <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&amp; pt)</span></span>
+            </h3>
+            <p>Insert a new point in the cloud, at the end of the container.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">pt&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>the point to insert</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>This assumes the user would correct the width and height later on!</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aa6ef9a1419810fc482624a6708104e6a"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename PurePointT&gt;
+                template&lt;class... Args&gt;
+              </div>
+              <span class="m-doc-wrap-bumper"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#acf40271a601d0988928f5160624bd8a8" class="m-doc">reference</a> pcl::<wbr />PointCloud&lt;pcl_cloud_span::<wbr />Spannable&lt;PurePointT&gt;&gt;&lt;PurePointT&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa6ef9a1419810fc482624a6708104e6a" class="m-doc-self">emplace_back</a>(</span><span class="m-doc-wrap">Args &amp;&amp; ... args)</span></span>
+            </h3>
+            <p>Emplace a new point in the cloud, at the end of the container.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">args&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>the parameters to forward to the point to construct</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>reference to the emplaced point</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>This breaks the organized structure of the cloud by setting the height to 1!</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad711ee6f69463531f9909918437df18d"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename PurePointT&gt;
+                template&lt;class... Args&gt;
+              </div>
+              <span class="m-doc-wrap-bumper"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#acf40271a601d0988928f5160624bd8a8" class="m-doc">reference</a> pcl::<wbr />PointCloud&lt;pcl_cloud_span::<wbr />Spannable&lt;PurePointT&gt;&gt;&lt;PurePointT&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad711ee6f69463531f9909918437df18d" class="m-doc-self">transient_emplace_back</a>(</span><span class="m-doc-wrap">Args &amp;&amp; ... args)</span></span>
+            </h3>
+            <p>Emplace a new point in the cloud, at the end of the container.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">args&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>the parameters to forward to the point to construct</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>reference to the emplaced point</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>This assumes the user would correct the width and height later on!</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a7cfc052ea24aedc167e72c1c5940e441"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename PurePointT&gt;
+              </div>
+              <span class="m-doc-wrap-bumper"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a> pcl::<wbr />PointCloud&lt;pcl_cloud_span::<wbr />Spannable&lt;PurePointT&gt;&gt;&lt;PurePointT&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7cfc052ea24aedc167e72c1c5940e441" class="m-doc-self">insert</a>(</span><span class="m-doc-wrap"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a> position,
+              const <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&amp; pt)</span></span>
+            </h3>
+            <p>Insert a new point in the cloud, given an iterator.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">position&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>where to insert the point</td>
+                </tr>
+                <tr>
+                  <td>pt&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>the point to insert</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>returns the new position iterator</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>This breaks the organized structure of the cloud by setting the height to 1!</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a03eacf40e2e9c3468198a66ba63a79c0"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename PurePointT&gt;
+              </div>
+              <span class="m-doc-wrap-bumper"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a> pcl::<wbr />PointCloud&lt;pcl_cloud_span::<wbr />Spannable&lt;PurePointT&gt;&gt;&lt;PurePointT&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a03eacf40e2e9c3468198a66ba63a79c0" class="m-doc-self">transient_insert</a>(</span><span class="m-doc-wrap"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a> position,
+              const <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&amp; pt)</span></span>
+            </h3>
+            <p>Insert a new point in the cloud, given an iterator.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">position&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>where to insert the point</td>
+                </tr>
+                <tr>
+                  <td>pt&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>the point to insert</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>returns the new position iterator</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>This assumes the user would correct the width and height later on!</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="af72782aa04f3ccafd2792bcb33e9c2f7"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename PurePointT&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">void pcl::<wbr />PointCloud&lt;pcl_cloud_span::<wbr />Spannable&lt;PurePointT&gt;&gt;&lt;PurePointT&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af72782aa04f3ccafd2792bcb33e9c2f7" class="m-doc-self">insert</a>(</span><span class="m-doc-wrap"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a> position,
+              std::size_t n,
+              const <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&amp; pt)</span></span>
+            </h3>
+            <p>Insert a new point in the cloud N times, given an iterator.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">position&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>where to insert the point</td>
+                </tr>
+                <tr>
+                  <td>n&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>the number of times to insert the point</td>
+                </tr>
+                <tr>
+                  <td>pt&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>the point to insert</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>This breaks the organized structure of the cloud by setting the height to 1!</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a952bbac2318b3595857f8438dac8531f"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename PurePointT&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">void pcl::<wbr />PointCloud&lt;pcl_cloud_span::<wbr />Spannable&lt;PurePointT&gt;&gt;&lt;PurePointT&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a952bbac2318b3595857f8438dac8531f" class="m-doc-self">transient_insert</a>(</span><span class="m-doc-wrap"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a> position,
+              std::size_t n,
+              const <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&amp; pt)</span></span>
+            </h3>
+            <p>Insert a new point in the cloud N times, given an iterator.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">position&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>where to insert the point</td>
+                </tr>
+                <tr>
+                  <td>n&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>the number of times to insert the point</td>
+                </tr>
+                <tr>
+                  <td>pt&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>the point to insert</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>This assumes the user would correct the width and height later on!</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a098c49f497c273fa399d58eeee6b8069"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename PurePointT&gt;
+                template&lt;class InputIterator&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">void pcl::<wbr />PointCloud&lt;pcl_cloud_span::<wbr />Spannable&lt;PurePointT&gt;&gt;&lt;PurePointT&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a098c49f497c273fa399d58eeee6b8069" class="m-doc-self">insert</a>(</span><span class="m-doc-wrap"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a> position,
+              InputIterator first,
+              InputIterator last)</span></span>
+            </h3>
+            <p>Insert a new range of points in the cloud, at a certain position.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">position&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>where to insert the data</td>
+                </tr>
+                <tr>
+                  <td>first&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>where to start inserting the points from</td>
+                </tr>
+                <tr>
+                  <td>last&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>where to stop inserting the points from</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>This breaks the organized structure of the cloud by setting the height to 1!</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a6fa39d3b9a7b003fde6785bc2fcdb7b9"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename PurePointT&gt;
+                template&lt;class InputIterator&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">void pcl::<wbr />PointCloud&lt;pcl_cloud_span::<wbr />Spannable&lt;PurePointT&gt;&gt;&lt;PurePointT&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6fa39d3b9a7b003fde6785bc2fcdb7b9" class="m-doc-self">transient_insert</a>(</span><span class="m-doc-wrap"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a> position,
+              InputIterator first,
+              InputIterator last)</span></span>
+            </h3>
+            <p>Insert a new range of points in the cloud, at a certain position.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">position&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>where to insert the data</td>
+                </tr>
+                <tr>
+                  <td>first&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>where to start inserting the points from</td>
+                </tr>
+                <tr>
+                  <td>last&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>where to stop inserting the points from</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>This assumes the user would correct the width and height later on!</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a6644ce04596b2fcc9ddb961e6c179d29"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename PurePointT&gt;
+                template&lt;class... Args&gt;
+              </div>
+              <span class="m-doc-wrap-bumper"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a> pcl::<wbr />PointCloud&lt;pcl_cloud_span::<wbr />Spannable&lt;PurePointT&gt;&gt;&lt;PurePointT&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6644ce04596b2fcc9ddb961e6c179d29" class="m-doc-self">emplace</a>(</span><span class="m-doc-wrap"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a> position,
+              Args &amp;&amp; ... args)</span></span>
+            </h3>
+            <p>Emplace a new point in the cloud, given an iterator.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">position&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>iterator before which the point will be emplaced</td>
+                </tr>
+                <tr>
+                  <td>args&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>the parameters to forward to the point to construct</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>returns the new position iterator</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>This breaks the organized structure of the cloud by setting the height to 1!</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a287459a800434bb50e60e6d4e32b912d"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename PurePointT&gt;
+                template&lt;class... Args&gt;
+              </div>
+              <span class="m-doc-wrap-bumper"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a> pcl::<wbr />PointCloud&lt;pcl_cloud_span::<wbr />Spannable&lt;PurePointT&gt;&gt;&lt;PurePointT&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a287459a800434bb50e60e6d4e32b912d" class="m-doc-self">transient_emplace</a>(</span><span class="m-doc-wrap"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a> position,
+              Args &amp;&amp; ... args)</span></span>
+            </h3>
+            <p>Emplace a new point in the cloud, given an iterator.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">position&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>iterator before which the point will be emplaced</td>
+                </tr>
+                <tr>
+                  <td>args&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>the parameters to forward to the point to construct</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>returns the new position iterator</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>This assumes the user would correct the width and height later on!</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a9c290e1ee73998655cdf80d751ea3d1d"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename PurePointT&gt;
+              </div>
+              <span class="m-doc-wrap-bumper"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a> pcl::<wbr />PointCloud&lt;pcl_cloud_span::<wbr />Spannable&lt;PurePointT&gt;&gt;&lt;PurePointT&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9c290e1ee73998655cdf80d751ea3d1d" class="m-doc-self">erase</a>(</span><span class="m-doc-wrap"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a> position)</span></span>
+            </h3>
+            <p>Erase a point in the cloud.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">position&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>what data point to erase</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>returns the new position iterator</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>This breaks the organized structure of the cloud by setting the height to 1!</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aa395dd48388d5d868f20ea7fd9e3f6b7"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename PurePointT&gt;
+              </div>
+              <span class="m-doc-wrap-bumper"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a> pcl::<wbr />PointCloud&lt;pcl_cloud_span::<wbr />Spannable&lt;PurePointT&gt;&gt;&lt;PurePointT&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa395dd48388d5d868f20ea7fd9e3f6b7" class="m-doc-self">transient_erase</a>(</span><span class="m-doc-wrap"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a> position)</span></span>
+            </h3>
+            <p>Erase a point in the cloud.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">position&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>what data point to erase</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>returns the new position iterator</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>This assumes the user would correct the width and height later on!</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a326e07fa546aa6157a61bd443ec9a9a7"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename PurePointT&gt;
+              </div>
+              <span class="m-doc-wrap-bumper"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a> pcl::<wbr />PointCloud&lt;pcl_cloud_span::<wbr />Spannable&lt;PurePointT&gt;&gt;&lt;PurePointT&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a326e07fa546aa6157a61bd443ec9a9a7" class="m-doc-self">erase</a>(</span><span class="m-doc-wrap"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a> first,
+              <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a> last)</span></span>
+            </h3>
+            <p>Erase a set of points given by a (first, last) iterator pair.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">first&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>where to start erasing points from</td>
+                </tr>
+                <tr>
+                  <td>last&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>where to stop erasing points from</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>returns the new position iterator</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>This breaks the organized structure of the cloud by setting the height to 1!</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a749eef76482e1b156077c62bfdc2a5d1"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename PurePointT&gt;
+              </div>
+              <span class="m-doc-wrap-bumper"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a> pcl::<wbr />PointCloud&lt;pcl_cloud_span::<wbr />Spannable&lt;PurePointT&gt;&gt;&lt;PurePointT&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a749eef76482e1b156077c62bfdc2a5d1" class="m-doc-self">transient_erase</a>(</span><span class="m-doc-wrap"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a> first,
+              <a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#aabe54c4f724e87352e04d5c7f45d2ddb" class="m-doc">iterator</a> last)</span></span>
+            </h3>
+            <p>Erase a set of points given by a (first, last) iterator pair.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">first&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>where to start erasing points from</td>
+                </tr>
+                <tr>
+                  <td>last&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>where to stop erasing points from</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>returns the new position iterator</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>This assumes the user would correct the width and height later on!</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a588ffec95314955362b58f6b807a7eaf"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename PurePointT&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">void pcl::<wbr />PointCloud&lt;pcl_cloud_span::<wbr />Spannable&lt;PurePointT&gt;&gt;&lt;PurePointT&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a588ffec95314955362b58f6b807a7eaf" class="m-doc-self">swap</a>(</span><span class="m-doc-wrap"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#a08c87600daad41c317ddf63da99c503b" class="m-doc">PointCloud</a>&lt;<a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#ad754f0ae7d6476f0c002049217a2115e" class="m-doc">PointT</a>&gt;&amp; rhs)</span></span>
+            </h3>
+            <p>Swap a point cloud with another cloud.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">rhs&nbsp;<span class="m-label m-flat m-danger">in/out</span></td>
+                  <td>point cloud to swap this with</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a448c776584893d87ddb6caec3f6a6196"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;typename PurePointT&gt;
+              </div>
+              <span class="m-doc-wrap-bumper"><a href="classpcl_1_1PointCloud_3_01pcl__cloud__span_1_1Spannable_3_01PurePointT_01_4_01_4.html#a339aafccd71ccb0a0a9f8a100623095e" class="m-doc">Ptr</a> pcl::<wbr />PointCloud&lt;pcl_cloud_span::<wbr />Spannable&lt;PurePointT&gt;&gt;&lt;PurePointT&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a448c776584893d87ddb6caec3f6a6196" class="m-doc-self">makeShared</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Copy the cloud to the heap and return a smart pointer Note that deep copy is performed, so avoid using this function on non-empty clouds. The changes of the returned cloud are not mirrored back to this one.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>shared pointer to the copy of the cloud</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search-v1.js"></script>
+<script src="searchdata-v1.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>pcl_cloud_span. Created with <a href="https://doxygen.org/">Doxygen</a> 1.9.1 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>
