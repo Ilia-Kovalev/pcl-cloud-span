@@ -26,6 +26,10 @@
 
 namespace pcl_cloud_span {
 
+/**
+ * \brief Point wrapper to use a point cloud span instead of normal point cloud
+ * \tparam PointT point type of used point data
+ */
 template <typename PointT>
 struct Spannable : PointT {};
 
