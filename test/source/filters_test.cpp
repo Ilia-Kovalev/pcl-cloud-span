@@ -42,10 +42,9 @@ typedef unsigned long long pop_t;
 using pcl_cloud_span::convertToPCL;
 using pcl_cloud_span::makeCloudSpan;
 using pcl_cloud_span::Spannable;
-using pcl_cloud_span::SpanType;
 
 using Point = pcl::PointXYZI;
-using SpannablePoint = Spannable<Point, SpanType::ReadOnly>;
+using SpannablePoint = Spannable<Point>;
 using CloudSpan = pcl::PointCloud<SpannablePoint>;
 using Cloud = pcl::PointCloud<Point>;
 

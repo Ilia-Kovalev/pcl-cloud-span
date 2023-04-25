@@ -29,11 +29,21 @@ target_include_directories(
     "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>"
 )
 
-target_compile_features(pcl_cloud_span_pcl_cloud_span INTERFACE cxx_std_14)
-
 find_package(PCL REQUIRED COMPONENTS common)
-find_package(Boost 1.78.0 REQUIRED)
-target_link_libraries(pcl_cloud_span_pcl_cloud_span INTERFACE ${PCL_INCLUDE_LIBS})
+
+include(FetchContent)
+FetchContent_Declare(
+  span_or_vector
+  GIT_REPOSITORY https://github.com/Tristis116/span-or-vector.git
+)
+
+FetchContent_MakeAvailable(span_or_vector)
+
+target_link_libraries(pcl_cloud_span_pcl_cloud_span
+  INTERFACE
+  ${PCL_INCLUDE_LIBS}
+  span_or_vector::span_or_vector
+)
 
 # ---- Install rules ----
 

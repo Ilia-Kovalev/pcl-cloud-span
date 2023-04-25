@@ -26,12 +26,7 @@
 
 namespace pcl_cloud_span {
 
-enum class SpanType { ReadOnly, ReadWrite };
-
-template <typename PointT, SpanType type = SpanType::ReadOnly>
-struct Spannable : PointT {
-};
+template <typename PointT>
+struct Spannable : PointT {};
 
 } // namespace pcl_cloud_span
-
-

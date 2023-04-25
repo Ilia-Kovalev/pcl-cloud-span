@@ -28,7 +28,7 @@
 
 #include <pcl/point_cloud.h>
 
-#include "utils/span_or_vector.h"
+#include <span_or_vector/span_or_vector.hpp>
 
 namespace pcl {
 /** \brief PointCloud represents the base class in PCL for storing collections of 3D
@@ -73,10 +73,9 @@ namespace pcl {
  * \author Patrick Mihelich, Radu B. Rusu
  */
 template <typename PurePointT>
-class PCL_EXPORTS
-    PointCloud<pcl_cloud_span::Spannable<PurePointT, pcl_cloud_span::SpanType::ReadOnly>> {
+class PCL_EXPORTS PointCloud<pcl_cloud_span::Spannable<PurePointT>> {
 public:
-  using PointT = pcl_cloud_span::Spannable<PurePointT, pcl_cloud_span::SpanType::ReadOnly>;
+  using PointT = pcl_cloud_span::Spannable<PurePointT>;
 
   /** \brief Default constructor. Sets \ref is_dense to true, \ref width
    * and \ref height to 0, and the \ref sensor_origin_ and \ref
@@ -84,7 +83,7 @@ public:
    */
   PointCloud() = default;
 
-  PointCloud(const PointT* data, std::uint32_t width_, std::uint32_t height_ = 1)
+  PointCloud(PointT* data, std::uint32_t width_, std::uint32_t height_ = 1)
   : points(data, static_cast<std::size_t>(width_ * height_))
   , width(width_)
   , height(height_)
@@ -338,11 +337,7 @@ public:
   pcl::PCLHeader header;
 
   /** \brief The point data. */
-  pcl_cloud_span::impl::utils::span_or_vector<
-      PointT,
-      pcl_cloud_span::impl::utils::span_type::read_only,
-      Eigen::aligned_allocator<PointT>>
-      points;
+  span_or_vector::span_or_vector<PointT, Eigen::aligned_allocator<PointT>> points;
 
   /** \brief The point cloud width (if organized as an image-structure). */
   std::uint32_t width = 0;
@@ -359,10 +354,8 @@ public:
   Eigen::Quaternionf sensor_orientation_ = Eigen::Quaternionf::Identity();
 
   using PointType = PointT; // Make the template class available from the outside
-  using VectorType = pcl_cloud_span::impl::utils::span_or_vector<
-      PointT,
-      pcl_cloud_span::impl::utils::span_type::read_only,
-      Eigen::aligned_allocator<PointT>>;
+  using VectorType =
+      span_or_vector::span_or_vector<PointT, Eigen::aligned_allocator<PointT>>;
   using CloudVectorType =
       std::vector<PointCloud<PointT>, Eigen::aligned_allocator<PointCloud<PointT>>>;
   using Ptr = shared_ptr<PointCloud<PointT>>;
