@@ -32,6 +32,13 @@
 #include <span_or_vector/span_or_vector.hpp>
 
 namespace pcl_cloud_span {
+
+/**
+ * \brief Convert point cloud span to PCL point cloud
+ * \tparam PointT point type
+ * \param in Point cloud span
+ * \return new PCL point cloud with data copied from `in`
+ */
 template <typename PointT>
 pcl::PointCloud<PointT>
 convertToPCL(const pcl::PointCloud<Spannable<PointT>>& in)
@@ -47,6 +54,15 @@ convertToPCL(const pcl::PointCloud<Spannable<PointT>>& in)
   return out;
 }
 
+/**
+ * \brief Convert point cloud span to PCL point cloud using move semantic
+ * \tparam PointT point type
+ * \param in Point cloud span
+ * \return new PCL point cloud with data moved from `in`
+ * \details This function moves points data only if input point cloud owns data.
+ * If input point cloud is a span over some other data, then the function created
+ * a new copy of points data.
+ */
 template <typename PointT>
 pcl::PointCloud<PointT>
 convertToPCL(pcl::PointCloud<Spannable<PointT>>&& in)
@@ -67,6 +83,14 @@ convertToPCL(pcl::PointCloud<Spannable<PointT>>&& in)
   return out;
 }
 
+/**
+ * \brief Create a point cloud span over existing points data
+ * \tparam PointT  point type
+ * \param data pointer to points data
+ * \param width point cloud width to set to output pcl::PointCloud
+ * \param height point cloud height to set to output pcl::PointCloud
+ * \return point cloud span that can be used in PCL algorithms
+ */
 template <typename PointT>
 pcl::PointCloud<Spannable<PointT>>
 makeCloudSpan(PointT* data, std::uint32_t width, std::uint32_t height = 1)
@@ -74,6 +98,14 @@ makeCloudSpan(PointT* data, std::uint32_t width, std::uint32_t height = 1)
   return {reinterpret_cast<Spannable<PointT>*>(data), width, height};
 }
 
+/**
+ * \brief Create point cloud span over existing points data
+ * \tparam PointT  point type
+ * \param data pointer to points data
+ * \param width point cloud width to set to output pcl::PointCloud
+ * \param height point cloud height to set to output pcl::PointCloud
+ * \return a pointer to a point cloud span that can be used in PCL algorithms
+ */
 template <typename PointT>
 typename pcl::PointCloud<Spannable<PointT>>::Ptr
 makeCloudSpanPtr(PointT* data, std::uint32_t width, std::uint32_t height = 1)

@@ -31,46 +31,13 @@
 #include <span_or_vector/span_or_vector.hpp>
 
 namespace pcl {
-/** \brief PointCloud represents the base class in PCL for storing collections of 3D
- * points.
- *
- * The class is templated, which means you need to specify the type of data
- * that it should contain. For example, to create a point cloud that holds 4
- * random XYZ data points, use:
- *
- * \code
- * pcl::PointCloud<pcl::PointXYZ> cloud;
- * cloud.push_back (pcl::PointXYZ (rand (), rand (), rand ()));
- * cloud.push_back (pcl::PointXYZ (rand (), rand (), rand ()));
- * cloud.push_back (pcl::PointXYZ (rand (), rand (), rand ()));
- * cloud.push_back (pcl::PointXYZ (rand (), rand (), rand ()));
- * \endcode
- *
- * The PointCloud class contains the following elements:
- *   - \b width - specifies the width of the point cloud dataset in the number of
- * points. WIDTH has two meanings:
- *     - it can specify the total number of points in the cloud (equal with POINTS see
- * below) for unorganized datasets;
- *     - it can specify the width (total number of points in a row) of an organized
- * point cloud dataset. \a Mandatory.
- *   - \b height - specifies the height of the point cloud dataset in the number of
- * points. HEIGHT has two meanings:
- *     - it can specify the height (total number of rows) of an organized point cloud
- * dataset;
- *     - it is set to 1 for unorganized datasets (thus used to check whether a dataset
- * is organized or not). \a Mandatory.
- *   - \b points - the data array where all points of type <b>PointT</b> are stored. \a
- * Mandatory.
- *
- *   - \b is_dense - specifies if all the data in <b>points</b> is finite (true), or
- * whether it might contain Inf/NaN values (false). \a Mandatory.
- *
- *   - \b sensor_origin_ - specifies the sensor acquisition pose (origin/translation).
- * \a Optional.
- *   - \b sensor_orientation_ - specifies the sensor acquisition pose (rotation). \a
- * Optional.
- *
- * \author Patrick Mihelich, Radu B. Rusu
+
+/** \brief pcl::PointCloud template specialization that uses span_or_vector for points
+ * data instead of std::vector.
+ * \details This specialization is a copy of pcl::PointCloud with a couple of changes:
+ * - extra constructor PointCloud(PointT* data, std::uint32_t width_, std::uint32_t
+ * height_ = 1) to initialize point cloud as a span over existing data
+ * - span_or_vector as container for points instead of std::vector
  */
 template <typename PurePointT>
 class PCL_EXPORTS PointCloud<pcl_cloud_span::Spannable<PurePointT>> {
