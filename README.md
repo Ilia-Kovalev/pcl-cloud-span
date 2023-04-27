@@ -131,10 +131,6 @@ In this conditions cloud span usage provides 7.5% speed-up because of unnecessar
 
 See the [BUILDING](BUILDING.md) document.
 
-# Contributing
-
-See the [CONTRIBUTING](CONTRIBUTING.md) document.
-
 # Licensing
 
 See the [LICENSE](LICENSE.txt) document
