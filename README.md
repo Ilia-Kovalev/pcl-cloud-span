@@ -119,7 +119,7 @@ Test cases:
 
 Average processing time for 10 runs:
 
-| Test case | Average time |
+| Test case | Average time, s |
 | - | - |
 | 1. native PointCloud2 | 0.7855245 |
 | 2. native PointCloud | 0.5327120 |
@@ -130,10 +130,6 @@ In this conditions cloud span usage provides 7.5% speed-up because of unnecessar
 # Building and installing
 
 See the [BUILDING](BUILDING.md) document.
-
-# Contributing
-
-See the [CONTRIBUTING](CONTRIBUTING.md) document.
 
 # Licensing
 

@@ -4,7 +4,7 @@ include(cmake/prelude.cmake)
 
 project(
     pcl_cloud_span
-    VERSION 0.0.0
+    VERSION 0.1.0
     DESCRIPTION "A small header-only library to use point clouds of arbitrary formats in PCL algorithms without unnecessary copying."
     HOMEPAGE_URL "https://github.com/Tristis116/pcl-cloud-span"
     LANGUAGES CXX
@@ -35,6 +35,7 @@ include(FetchContent)
 FetchContent_Declare(
   span_or_vector
   GIT_REPOSITORY https://github.com/Tristis116/span-or-vector.git
+  GIT_TAG v0.1.0
 )
 
 FetchContent_MakeAvailable(span_or_vector)
