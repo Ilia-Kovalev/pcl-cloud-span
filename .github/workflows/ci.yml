@@ -9,6 +9,9 @@ on:
     branches:
     - master
 
+  schedule:
+    - cron: '* * * * 6'
+
 env:
   VCPKG_COMMIT: "8daf70c56ba9581f5251a5d4675eb771b6b34957"
 
