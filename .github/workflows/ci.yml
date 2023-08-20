@@ -13,7 +13,7 @@ on:
     - cron: '0 0 * * 6'
 
 env:
-  VCPKG_COMMIT: "8b04a7bd93bef991818fc372bb83ce00ec1c1c16"
+  VCPKG_COMMIT: "c95000e1b5bb62884de08d5e952993c8bced9db6"
 
 jobs:
   lint:
@@ -111,7 +111,11 @@ jobs:
 
     strategy:
       matrix:
-        os: [macos-12, ubuntu-22.04, windows-2022]
+        os: [
+          macos-12,
+          ubuntu-22.04,
+          # windows-2022   # Disabled because free runner doesn't have enough disk space to build
+          ]
 
     runs-on: ${{ matrix.os }}
 
