@@ -114,7 +114,7 @@ jobs:
         os: [
           macos-12,
           ubuntu-22.04,
-          # windows-2022   # Disabled because free runner doesn't have enough disk space to build
+          windows-2022
           ]
 
     runs-on: ${{ matrix.os }}
