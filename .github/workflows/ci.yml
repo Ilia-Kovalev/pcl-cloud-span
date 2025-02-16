@@ -13,7 +13,7 @@ on:
     - cron: '0 0 * * 6'
 
 env:
-  VCPKG_COMMIT: "c4467cb686f92671f0172aa8299a77d908175b4e"
+  VCPKG_COMMIT: "d5ec528843d29e3a52d745a64b469f810b2cedbf"
 
 jobs:
   lint:
@@ -44,7 +44,7 @@ jobs:
     # edit the "<name>" placeholder to your GitHub name.
     # If you do not wish to use codecov, then simply delete this job from the
     # workflow.
-    if: github.repository_owner == 'Tristis116'
+    if: github.repository_owner == 'Ilia-Kovalev'
 
     steps:
     - uses: actions/checkout@v3
@@ -163,7 +163,7 @@ jobs:
 
     if: github.ref == 'refs/heads/master'
       && github.event_name == 'push'
-      && github.repository_owner == 'Tristis116'
+      && github.repository_owner == 'Ilia-Kovalev'
 
     steps:
     - uses: actions/checkout@v3
